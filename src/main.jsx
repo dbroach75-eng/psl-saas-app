@@ -98,7 +98,7 @@ setSubscriptionStatus(profile.subscription_status);
 setLoggedIn(true);
 setAdmin(false);
 setPage("dashboard");
-
+}
   function logout() {
     setLoggedIn(false);
     setAdmin(false);
