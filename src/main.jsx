@@ -81,10 +81,23 @@ async function signIn() {
     return;
   }
 
-  setLoggedIn(true);
-  setAdmin(false);
-  setPage("dashboard");
+const { data: userData } = await supabase.auth.getUser();
+
+const { data: profile, error: profileError } = await supabase
+  .from("profiles")
+  .select("subscription_status")
+  .eq("id", userData.user.id)
+  .single();
+
+if (profileError) {
+  alert(profileError.message);
+  return;
 }
+
+setSubscriptionStatus(profile.subscription_status);
+setLoggedIn(true);
+setAdmin(false);
+setPage("dashboard");
 
   function logout() {
     setLoggedIn(false);
