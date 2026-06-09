@@ -43,6 +43,46 @@ function App() {
     setPage("dashboard");
   }
 
+  async function signUp() {
+  if (!supabase) {
+    alert("Supabase is not connected yet.");
+    return;
+  }
+
+  const { error } = await supabase.auth.signUp({
+    email,
+    password,
+  });
+
+  if (error) {
+    alert(error.message);
+    return;
+  }
+
+  alert("Account created. Check your email if confirmation is required.");
+}
+
+async function signIn() {
+  if (!supabase) {
+    alert("Supabase is not connected yet.");
+    return;
+  }
+
+  const { error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  });
+
+  if (error) {
+    alert(error.message);
+    return;
+  }
+
+  setLoggedIn(true);
+  setAdmin(false);
+  setPage("dashboard");
+}
+
   function logout() {
     setLoggedIn(false);
     setAdmin(false);
