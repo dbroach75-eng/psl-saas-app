@@ -216,15 +216,18 @@ if (page === "dashboard" && loggedIn) {
           <h2>PSL</h2>
           <button onClick={() => setAdmin(false)}>Investor Dashboard</button>
           <button onClick={() => setAdmin(true)}>Admin Panel</button>
-          <button onClick={exportCSV}>Export CSV</button>
-    <a
+<button onClick={exportCSV}>Export CSV</button>
+
+<a
+  className="sidebar-link"
   href="https://buy.stripe.com/4gM28t3zi5N89pa9BcabK01"
   target="_blank"
   rel="noopener noreferrer"
 >
   Upgrade to Starter Plan
 </a>
-          <button onClick={logout}>Logout</button>
+
+<button onClick={logout}>Logout</button>
         </aside>
 
         <section className="content">
