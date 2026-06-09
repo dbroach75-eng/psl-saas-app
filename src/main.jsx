@@ -107,7 +107,7 @@ function App() {
           <button onClick={() => setAdmin(true)}>Admin Panel</button>
           <button onClick={exportCSV}>Export CSV</button>
             <a
-    href="https://buy.stripe.com/test_bJe7sK6UG3dee2w2bc77O00"
+    href="https://buy.stripe.com/3cIbJ30n6a3ofNydRsabK00
     target="_blank"
     rel="noopener noreferrer"
   > 
