@@ -180,8 +180,34 @@ if (page === "login") {
     </main>
   );
 }
-  if (page === "dashboard" && loggedIn) {
-    const totalOverage = leads.reduce((sum, l) => sum + Number(l.overage || 0), 0);
+if (page === "dashboard" && loggedIn) {
+  if (subscriptionStatus !== "active") {
+    return (
+      <main className="center">
+        <section className="login-card">
+          <h1>Upgrade Required</h1>
+          <p>Your account is currently on the free plan.</p>
+
+          <a
+            href="https://buy.stripe.com/4gM28t3zi5N89pa9BcabK01"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Upgrade to Starter Plan
+          </a>
+
+          <button
+            className="link"
+            onClick={() => setPage("home")}
+          >
+            Back Home
+          </button>
+        </section>
+      </main>
+    );
+  }
+
+  const totalOverage = leads.reduce((sum, l) => sum + Number(l.overage || 0), 0);
     const hotLeads = leads.filter(l => l.status === "Interested").length;
 
     return (
