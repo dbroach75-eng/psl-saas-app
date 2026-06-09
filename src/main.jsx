@@ -23,6 +23,7 @@ function App() {
   const paymentSuccess = window.location.search.includes("success=true");
   const [loggedIn, setLoggedIn] = useState(false);
   const [admin, setAdmin] = useState(false);
+  const [subscriptionStatus, setSubscriptionStatus] = useState("free");
   const [leads, setLeads] = useState(demoLeads);
   const [query, setQuery] = useState("");
 
