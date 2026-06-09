@@ -18,6 +18,8 @@ const demoLeads = [
 
 function App() {
   const [page, setPage] = useState("home");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const paymentSuccess = window.location.search.includes("success=true");
   const [loggedIn, setLoggedIn] = useState(false);
   const [admin, setAdmin] = useState(false);
