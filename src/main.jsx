@@ -86,8 +86,11 @@ const { data: userData } = await supabase.auth.getUser();
 const { data: profile, error: profileError } = await supabase
   .from("profiles")
   .select("subscription_status")
-.eq("email", userData.user.email)
-  .maybeSingle();
+  .eq("id", userData.user.id)
+  .single();
+
+  alert("User ID: " + userData.user.id);
+alert(JSON.stringify(profile));
 
 if (profileError) {
   alert(profileError.message);
