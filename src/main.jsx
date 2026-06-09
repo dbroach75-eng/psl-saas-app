@@ -3,6 +3,12 @@ import { createRoot } from "react-dom/client";
 import { createClient } from "@supabase/supabase-js";
 import "./style.css";
 
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const supabase = supabaseUrl && supabaseKey
+  ? createClient(supabaseUrl, supabaseKey)
+  : null;
+
 const demoLeads = [
   { id: 1, owner: "John Smith", phone: "513-555-0121", state: "Ohio", county: "Hamilton", address: "123 Vine St, Cincinnati, OH", overage: 18500, status: "New" },
   { id: 2, owner: "Lisa Brown", phone: "713-555-0198", state: "Texas", county: "Harris", address: "880 Main Ave, Houston, TX", overage: 32000, status: "New" },
