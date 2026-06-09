@@ -93,6 +93,10 @@ if (profileError) {
   alert(profileError.message);
   return;
 }
+if (!profile) {
+  alert("No profile found for this user.");
+  return;
+}
 
 setSubscriptionStatus(profile.subscription_status);
 setLoggedIn(true);
