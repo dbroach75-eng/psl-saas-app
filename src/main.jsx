@@ -83,25 +83,14 @@ async function signIn() {
 
 const { data: userData } = await supabase.auth.getUser();
 
-const { data: profiles, error: profileError } = await supabase
+const { data: profile, error: profileError } = await supabase
   .from("profiles")
   .select("subscription_status")
-  .eq("id", userData.user.id);
+  .eq("id", userData.user.id)
+  .single();
 
-alert("User ID: " + userData.user.id);
-alert(JSON.stringify(profiles));
-
-// setSubscriptionStatus(profile.subscription_status);
-// setLoggedIn(true);
-// setAdmin(false);
-// setPage("dashboard");
-  
 if (profileError) {
   alert(profileError.message);
-  return;
-}
-if (!profile) {
-  alert("No profile found for this user.");
   return;
 }
 
@@ -109,6 +98,7 @@ setSubscriptionStatus(profile.subscription_status);
 setLoggedIn(true);
 setAdmin(false);
 setPage("dashboard");
+
 }
   function logout() {
     setLoggedIn(false);
