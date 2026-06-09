@@ -128,20 +128,42 @@ async function signIn() {
     URL.revokeObjectURL(url);
   }
 
-  if (page === "login") {
-    return (
-      <main className="center">
-        <section className="login-card">
-          <h1>PSL Login</h1>
-          <p>Choose a test login below.</p>
-          <button className="primary" onClick={loginAsInvestor}>Login as Investor</button>
-          <button className="secondary" onClick={loginAsAdmin}>Login as Admin</button>
-          <button className="link" onClick={() => setPage("home")}>Back Home</button>
-        </section>
-      </main>
-    );
-  }
+if (page === "login") {
+  return (
+    <main className="center">
+      <section className="login-card">
+        <h1>PSL Finance Hub</h1>
+        <p>Create an account or login.</p>
 
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+
+        <button className="primary" onClick={signUp}>
+          Create Account
+        </button>
+
+        <button className="secondary" onClick={signIn}>
+          Login
+        </button>
+
+        <button className="link" onClick={() => setPage("home")}>
+          Back Home
+        </button>
+      </section>
+    </main>
+  );
+}
   if (page === "dashboard" && loggedIn) {
     const totalOverage = leads.reduce((sum, l) => sum + Number(l.overage || 0), 0);
     const hotLeads = leads.filter(l => l.status === "Interested").length;
