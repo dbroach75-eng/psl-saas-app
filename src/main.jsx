@@ -83,15 +83,19 @@ async function signIn() {
 
 const { data: userData } = await supabase.auth.getUser();
 
-const { data: profile, error: profileError } = await supabase
+const { data: profiles, error: profileError } = await supabase
   .from("profiles")
   .select("subscription_status")
-  .eq("id", userData.user.id)
-  .single();
+  .eq("id", userData.user.id);
 
-  alert("User ID: " + userData.user.id);
-alert(JSON.stringify(profile));
+alert("User ID: " + userData.user.id);
+alert(JSON.stringify(profiles));
 
+// setSubscriptionStatus(profile.subscription_status);
+// setLoggedIn(true);
+// setAdmin(false);
+// setPage("dashboard");
+  
 if (profileError) {
   alert(profileError.message);
   return;
