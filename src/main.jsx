@@ -86,14 +86,17 @@ const { data: userData } = await supabase.auth.getUser();
 const { data: profile, error: profileError } = await supabase
   .from("profiles")
   .select("subscription_status")
- .eq("email", email.trim().toLowerCase())
+.eq("email", userData.user.email)
   .maybeSingle();
 
 if (profileError) {
   alert(profileError.message);
   return;
 }
-alert(JSON.stringify(profile));
+if (!profile) {
+  alert("No profile found for this user.");
+  return;
+}
 
 setSubscriptionStatus(profile.subscription_status);
 setLoggedIn(true);
