@@ -4,12 +4,13 @@
     "build": "vite build",
     "preview": "vite preview"
   },
-  "dependencies": {
-    "@vitejs/plugin-react": "latest",
-    "vite": "latest",
-    "react": "latest",
-    "react-dom": "latest",
-    "@supabase/supabase-js": "latest"
-  },
+ "dependencies": {
+  "@vitejs/plugin-react": "latest",
+  "vite": "latest",
+  "react": "latest",
+  "react-dom": "latest",
+  "@supabase/supabase-js": "latest",
+  "stripe": "^18.1.1"
+}
   "devDependencies": {}
 }
