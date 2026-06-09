@@ -12,6 +12,7 @@ const demoLeads = [
 
 function App() {
   const [page, setPage] = useState("home");
+  const paymentSuccess = window.location.search.includes("success=true");
   const [loggedIn, setLoggedIn] = useState(false);
   const [admin, setAdmin] = useState(false);
   const [leads, setLeads] = useState(demoLeads);
@@ -185,6 +186,17 @@ function App() {
 
   return (
     <main>
+      {paymentSuccess && (
+  <div style={{
+    background: "#22c55e",
+    color: "#07120b",
+    padding: "16px",
+    textAlign: "center",
+    fontWeight: "bold"
+  }}>
+    🎉 Payment Successful! Welcome to PSL Finance Hub. You can now access your dashboard.
+  </div>
+)}
       <nav className="nav">
         <strong>PSL Finance Hub</strong>
         <div>
