@@ -250,7 +250,6 @@ if (page === "dashboard" && loggedIn) {
           <h2>PSL</h2>
           <button onClick={() => setAdmin(false)}>Investor Dashboard</button>
           <button onClick={() => setAdmin(true)}>Admin Panel</button>
-<button onClick={exportCSV}>Export CSV</button>
 
 <a
   className="sidebar-link"
@@ -269,7 +268,13 @@ if (page === "dashboard" && loggedIn) {
   <div>
     <h1>{admin ? "Admin Panel" : "Investor Dashboard"}</h1>
     <p>{admin ? "Manage leads and system data." : "Search and export foreclosure overage leads."}</p>
-    <p className="member-badge">🟢 ACTIVE MEMBER — Starter Plan</p><p>Welcome back, {email}</p>
+   <p className="member-badge">
+  🟢 ACTIVE MEMBER — Starter Plan
+</p>
+
+<p>
+  Welcome back, {email}
+</p>
   </div>
 </div>
           <div className="account-card">
