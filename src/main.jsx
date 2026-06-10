@@ -243,6 +243,11 @@ if (page === "dashboard" && loggedIn) {
 
   const totalOverage = leads.reduce((sum, l) => sum + Number(l.overage || 0), 0);
     const hotLeads = leads.filter(l => l.status === "Interested").length;
+  
+  const leadsByState = filtered.reduce((acc, lead) => {
+  acc[lead.state] = (acc[lead.state] || 0) + 1;
+  return acc;
+}, {});
 
     return (
       <main className="app">
@@ -297,6 +302,16 @@ if (page === "dashboard" && loggedIn) {
             <div className="stat"><b>${totalOverage.toLocaleString()}</b><span>Estimated Overage</span></div>
             <div className="stat"><b>{hotLeads}</b><span>Hot Leads</span></div>
           </div>
+          <div className="analytics-card">
+  <h2>Leads by State</h2>
+
+  {Object.entries(leadsByState).map(([state, count]) => (
+    <div className="state-row" key={state}>
+      <span>{state}</span>
+      <strong>{count} Leads</strong>
+    </div>
+  ))}
+</div>
 
                {admin && (
             <section className="panel">
