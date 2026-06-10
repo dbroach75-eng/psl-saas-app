@@ -190,7 +190,7 @@ if (page === "dashboard" && loggedIn) {
           <p>Your account is currently on the free plan.</p>
 
           <a
-            href="https://buy.stripe.com/4gM28t3zi5N89pa9BcabK01"
+            href="https://buy.stripe.com/test_3cIbJ30n6a3ofNydRsabK00"
             target="_blank"
             rel="noopener noreferrer"
           >
