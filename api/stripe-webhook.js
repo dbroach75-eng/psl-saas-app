@@ -8,18 +8,35 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY
 );
 
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
+async function getRawBody(req) {
+  const chunks = [];
+
+  for await (const chunk of req) {
+    chunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk));
+  }
+
+  return Buffer.concat(chunks);
+}
+
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).send("Method Not Allowed");
   }
 
   const sig = req.headers["stripe-signature"];
+  const rawBody = await getRawBody(req);
 
   let event;
 
   try {
     event = stripe.webhooks.constructEvent(
-      req.body,
+      rawBody,
       sig,
       process.env.STRIPE_WEBHOOK_SECRET
     );
@@ -30,15 +47,16 @@ export default async function handler(req, res) {
   if (event.type === "checkout.session.completed") {
     const session = event.data.object;
 
-    const customerEmail = session.customer_details?.email;
+    const customerEmail =
+      session.customer_details?.email || session.customer_email;
 
     if (customerEmail) {
       await supabase
         .from("profiles")
         .update({ subscription_status: "active" })
-        .eq("email", customerEmail);
+        .eq("email", customerEmail.toLowerCase());
     }
   }
 
-  res.status(200).json({ received: true });
+  return res.status(200).json({ received: true });
 }
