@@ -258,6 +258,21 @@ if (page === "dashboard" && loggedIn) {
   .sort((a, b) => b.overage - a.overage)
   .slice(0, 10);
 
+  const statesCovered = new Set(filtered.map(lead => lead.state)).size;
+
+const countiesCovered = new Set(filtered.map(lead => lead.county)).size;
+
+const largestOverage = filtered.length
+  ? Math.max(...filtered.map(lead => Number(lead.overage || 0)))
+  : 0;
+
+const averageOverage = filtered.length
+  ? filtered.reduce(
+      (sum, lead) => sum + Number(lead.overage || 0),
+      0
+    ) / filtered.length
+  : 0;
+
     return (
       <main className="app">
         <aside className="sidebar">
