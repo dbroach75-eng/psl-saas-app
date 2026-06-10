@@ -299,22 +299,7 @@ if (page === "dashboard" && loggedIn) {
           </div>
 
           {admin && (
-            <section className="panel">
-              <h2>Admin Tools</h2>
-              <button className="primary" onClick={addLead}>Add Demo Lead</button>
-              <input
-  type="file"
-  accept=".csv"
-  onChange={handleCSVUpload}
-/>
-              <p>This admin panel is ready for Supabase database connection later.</p>
-            </section>
-          )}
-
-          <section className="panel">
-            <div className="panel-head">
-            
-            <div className="table-wrap">
+           
  <section className="panel">
   <div className="table-wrap">
     <div className="panel-head">
