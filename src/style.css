@@ -59,3 +59,9 @@
   border-bottom: 1px solid #334155;
   padding: 10px 0;
 }
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin: 22px 0;
+}
