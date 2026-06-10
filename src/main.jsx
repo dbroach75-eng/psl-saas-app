@@ -239,6 +239,12 @@ if (page === "dashboard" && loggedIn) {
     <p className="member-badge">🟢 ACTIVE MEMBER — Starter Plan</p>
   </div>
 </div>
+          <div className="account-card">
+  <h2>Account Summary</h2>
+  <p><strong>Plan:</strong> Starter</p>
+  <p><strong>Status:</strong> Active</p>
+  <p><strong>Access:</strong> Investor Dashboard + CSV Export</p>
+</div>
 
           <div className="stats">
             <div className="stat"><b>{leads.length}</b><span>Total Leads</span></div>
