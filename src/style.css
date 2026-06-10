@@ -40,3 +40,22 @@
   background: #1e293b;
   color: #22c55e;
 }
+.analytics-card {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 16px;
+  padding: 22px;
+  margin: 22px 0;
+}
+
+.analytics-card h2 {
+  color: #22c55e;
+  margin-top: 0;
+}
+
+.state-row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #334155;
+  padding: 10px 0;
+}
