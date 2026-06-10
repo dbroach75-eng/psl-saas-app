@@ -318,6 +318,22 @@ if (page === "dashboard" && loggedIn) {
             </div>
 
             <div className="table-wrap">
+  <div className="panel-head">
+  <input
+    className="search"
+    placeholder="🔍 Search by owner, phone, state, county, address, or status..."
+    value={query}
+    onChange={e => setQuery(e.target.value)}
+  />
+
+  <span className="lead-count">
+    {filtered.length} Leads Found
+  </span>
+
+  <button className="primary" onClick={exportCSV}>
+    Download CSV
+  </button>
+</div>
               <table>
                 <thead>
                   <tr>
