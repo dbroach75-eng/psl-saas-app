@@ -248,6 +248,11 @@ if (page === "dashboard" && loggedIn) {
   acc[lead.state] = (acc[lead.state] || 0) + 1;
   return acc;
 }, {});
+  
+ const leadsByCounty = filtered.reduce((acc, lead) => {
+  acc[lead.county] = (acc[lead.county] || 0) + 1;
+  return acc;
+}, {}); 
 
     return (
       <main className="app">
