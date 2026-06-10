@@ -252,7 +252,11 @@ if (page === "dashboard" && loggedIn) {
  const leadsByCounty = filtered.reduce((acc, lead) => {
   acc[lead.county] = (acc[lead.county] || 0) + 1;
   return acc;
-}, {}); 
+}, {});
+  
+  const topOverages = [...filtered]
+  .sort((a, b) => b.overage - a.overage)
+  .slice(0, 10);
 
     return (
       <main className="app">
@@ -329,6 +333,21 @@ if (page === "dashboard" && loggedIn) {
         <strong>{count} Leads</strong>
       </div>
     ))}
+</div>
+          <div className="analytics-card">
+  <h2>💰 Top Overage Opportunities</h2>
+
+  {topOverages.map((lead) => (
+    <div className="state-row" key={lead.id}>
+      <span>
+        {lead.owner} ({lead.county})
+      </span>
+
+      <strong>
+        ${lead.overage.toLocaleString()}
+      </strong>
+    </div>
+  ))}
 </div>
 
                {admin && (
