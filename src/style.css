@@ -7,3 +7,15 @@
   color: #07120b;
   font-weight: 800;
 }
+.account-card {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 16px;
+  padding: 22px;
+  margin: 22px 0;
+}
+
+.account-card h2 {
+  color: #22c55e;
+  margin-top: 0;
+}
