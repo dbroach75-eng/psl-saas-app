@@ -244,12 +244,7 @@ if (page === "dashboard" && loggedIn) {
   const totalOverage = leads.reduce((sum, l) => sum + Number(l.overage || 0), 0);
     const hotLeads = leads.filter(l => l.status === "Interested").length;
   
-  const leadsByState = filtered.reduce((acc, lead) => {
-  acc[lead.state] = (acc[lead.state] || 0) + 1;
-  return acc;
-}, {});
-  
-  const leadsByState = filtered.reduce((acc, lead) => {
+ const leadsByState = filtered.reduce((acc, lead) => {
   acc[lead.state] = (acc[lead.state] || 0) + 1;
   return acc;
 }, {});
