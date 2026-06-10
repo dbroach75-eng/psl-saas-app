@@ -358,6 +358,7 @@ if (page === "dashboard" && loggedIn) {
               </table>
             </div>
           </section>
+       </section>
       </main>
     );
   }
