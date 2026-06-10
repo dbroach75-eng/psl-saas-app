@@ -244,6 +244,14 @@ if (page === "dashboard" && loggedIn) {
   <p><strong>Plan:</strong> Starter</p>
   <p><strong>Status:</strong> Active</p>
   <p><strong>Access:</strong> Investor Dashboard + CSV Export</p>
+           <a
+  className="manage-subscription"
+  href="https://billing.stripe.com/p/login/test"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  Manage Subscription
+</a> 
 </div>
 
           <div className="stats">
