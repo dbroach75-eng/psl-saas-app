@@ -33,3 +33,10 @@
 .manage-subscription:hover {
   opacity: 0.9;
 }
+.lead-count {
+  font-weight: 700;
+  padding: 10px 15px;
+  border-radius: 8px;
+  background: #1e293b;
+  color: #22c55e;
+}
