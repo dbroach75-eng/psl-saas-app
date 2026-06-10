@@ -313,15 +313,7 @@ if (page === "dashboard" && loggedIn) {
 
           <section className="panel">
             <div className="panel-head">
-              <input
-                className="search"
-                placeholder="Search leads by owner, phone, state, county, address, status..."
-                value={query}
-                onChange={e => setQuery(e.target.value)}
-              />
-              <button className="primary" onClick={exportCSV}>Download CSV</button>
-            </div>
-
+            
             <div className="table-wrap">
   <div className="panel-head">
   <input
