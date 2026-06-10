@@ -123,6 +123,39 @@ setPage("dashboard");
       status: "New"
     }]);
   }
+  function handleCSVUpload(event) {
+  const file = event.target.files[0];
+
+  if (!file) return;
+
+  const reader = new FileReader();
+
+  reader.onload = function (e) {
+    const text = e.target.result;
+    const rows = text.split("\n").slice(1);
+
+    const importedLeads = rows
+      .filter(row => row.trim() !== "")
+      .map((row, index) => {
+        const columns = row.split(",");
+
+        return {
+          id: leads.length + index + 1,
+          owner: columns[0] || "",
+          phone: columns[1] || "",
+          state: columns[2] || "",
+          county: columns[3] || "",
+          address: columns[4] || "",
+          overage: Number(columns[5]) || 0,
+          status: columns[6] || "New"
+        };
+      });
+
+    setLeads([...leads, ...importedLeads]);
+  };
+
+  reader.readAsText(file);
+}
 
   function exportCSV() {
     const rows = [
@@ -264,6 +297,11 @@ if (page === "dashboard" && loggedIn) {
             <section className="panel">
               <h2>Admin Tools</h2>
               <button className="primary" onClick={addLead}>Add Demo Lead</button>
+              <input
+  type="file"
+  accept=".csv"
+  onChange={handleCSVUpload}
+/>
               <p>This admin panel is ready for Supabase database connection later.</p>
             </section>
           )}
