@@ -317,6 +317,19 @@ if (page === "dashboard" && loggedIn) {
     </div>
   ))}
 </div>
+          <div className="analytics-card">
+  <h2>Top Counties</h2>
+
+  {Object.entries(leadsByCounty)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 10)
+    .map(([county, count]) => (
+      <div className="state-row" key={county}>
+        <span>{county}</span>
+        <strong>{count} Leads</strong>
+      </div>
+    ))}
+</div>
 
                {admin && (
             <section className="panel">
