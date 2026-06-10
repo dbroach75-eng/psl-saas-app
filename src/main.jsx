@@ -299,8 +299,7 @@ if (page === "dashboard" && loggedIn) {
           </div>
 
           {admin && (
-           
- <section className="panel">
+            <section className="panel">
   <div className="table-wrap">
     <div className="panel-head">
       <input
