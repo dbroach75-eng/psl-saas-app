@@ -315,49 +315,52 @@ if (page === "dashboard" && loggedIn) {
             <div className="panel-head">
             
             <div className="table-wrap">
-  <div className="panel-head">
-  <input
-    className="search"
-    placeholder="🔍 Search by owner, phone, state, county, address, or status..."
-    value={query}
-    onChange={e => setQuery(e.target.value)}
-  />
+ <section className="panel">
+  <div className="table-wrap">
+    <div className="panel-head">
+      <input
+        className="search"
+        placeholder="🔍 Search by owner, phone, state, county, address, or status..."
+        value={query}
+        onChange={e => setQuery(e.target.value)}
+      />
 
-  <span className="lead-count">
-    {filtered.length} Leads Found
-  </span>
+      <span className="lead-count">
+        {filtered.length} Leads Found
+      </span>
 
-  <button className="primary" onClick={exportCSV}>
-    Download CSV
-  </button>
-</div>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Owner</th><th>Phone</th><th>State</th><th>County</th><th>Address</th><th>Overage</th><th>Status</th><th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filtered.map(lead => (
-                    <tr key={lead.id}>
-                      <td>{lead.owner}</td>
-                      <td><a href={`tel:${lead.phone}`}>{lead.phone}</a></td>
-                      <td>{lead.state}</td>
-                      <td>{lead.county}</td>
-                      <td>{lead.address}</td>
-                      <td>${lead.overage.toLocaleString()}</td>
-                      <td><span className={`badge ${lead.status.toLowerCase()}`}>{lead.status}</span></td>
-                      <td>
-                        <button onClick={() => updateStatus(lead.id, "Contacted")}>Contacted</button>
-                        <button onClick={() => updateStatus(lead.id, "Interested")}>Interested</button>
-                        <button onClick={() => updateStatus(lead.id, "Closed")}>Closed</button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </section>
+      <button className="primary" onClick={exportCSV}>
+        Download CSV
+      </button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Owner</th><th>Phone</th><th>State</th><th>County</th><th>Address</th><th>Overage</th><th>Status</th><th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {filtered.map(lead => (
+          <tr key={lead.id}>
+            <td>{lead.owner}</td>
+            <td><a href={`tel:${lead.phone}`}>{lead.phone}</a></td>
+            <td>{lead.state}</td>
+            <td>{lead.county}</td>
+            <td>{lead.address}</td>
+            <td>${lead.overage.toLocaleString()}</td>
+            <td><span className={`badge ${lead.status.toLowerCase()}`}>{lead.status}</span></td>
+            <td>
+              <button onClick={() => updateStatus(lead.id, "Contacted")}>Contacted</button>
+              <button onClick={() => updateStatus(lead.id, "Interested")}>Interested</button>
+              <button onClick={() => updateStatus(lead.id, "Closed")}>Closed</button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</section>
        </section>
       </main>
     );
