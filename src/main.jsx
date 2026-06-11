@@ -272,7 +272,11 @@ const averageOverage = filtered.length
       0
     ) / filtered.length
   : 0;
-
+  
+const statusCounts = filtered.reduce((acc, lead) => {
+  acc[lead.status] = (acc[lead.status] || 0) + 1;
+  return acc;
+}, {});
     return (
       <main className="app">
         <aside className="sidebar">
