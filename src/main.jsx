@@ -284,6 +284,9 @@ const statusCounts = filtered.reduce((acc, lead) => {
   acc[lead.status] = (acc[lead.status] || 0) + 1;
   return acc;
 }, {});
+  const favoriteLeads = filtered.filter(lead =>
+  favorites.includes(lead.id)
+);
     return (
       <main className="app">
         <aside className="sidebar">
@@ -342,6 +345,16 @@ const statusCounts = filtered.reduce((acc, lead) => {
   <div className="stat"><b>{countiesCovered}</b><span>Counties Covered</span></div>
   <div className="stat"><b>${largestOverage.toLocaleString()}</b><span>Largest Overage</span></div>
   <div className="stat"><b>${Math.round(averageOverage).toLocaleString()}</b><span>Average Overage</span></div>
+</div>
+          <div className="analytics-card">
+  <h2>Lead Status Analytics</h2>
+
+  {["New", "Contacted", "Interested", "Closed"].map((status) => (
+    <div className="state-row" key={status}>
+      <span>{status}</span>
+      <strong>{statusCounts[status] || 0} Leads</strong>
+    </div>
+  ))}
 </div>
           <div className="analytics-card">
   <h2>Lead Status Analytics</h2>
