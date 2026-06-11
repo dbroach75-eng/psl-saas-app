@@ -110,7 +110,13 @@ setPage("dashboard");
   function updateStatus(id, status) {
     setLeads(leads.map(l => l.id === id ? { ...l, status } : l));
   }
-
+function toggleFavorite(id) {
+  setFavorites(prev =>
+    prev.includes(id)
+      ? prev.filter(favId => favId !== id)
+      : [...prev, id]
+  );
+}
   function addLead() {
     const id = leads.length + 1;
     setLeads([...leads, {
@@ -434,11 +440,14 @@ const statusCounts = filtered.reduce((acc, lead) => {
                       <td>{lead.address}</td>
                       <td>${lead.overage.toLocaleString()}</td>
                       <td><span className={`badge ${lead.status.toLowerCase()}`}>{lead.status}</span></td>
-                      <td>
-                        <button onClick={() => updateStatus(lead.id, "Contacted")}>Contacted</button>
-                        <button onClick={() => updateStatus(lead.id, "Interested")}>Interested</button>
-                        <button onClick={() => updateStatus(lead.id, "Closed")}>Closed</button>
-                      </td>
+                   <td>
+  <button onClick={() => toggleFavorite(lead.id)}>
+    {favorites.includes(lead.id) ? "★ Saved" : "☆ Favorite"}
+  </button>
+  <button onClick={() => updateStatus(lead.id, "Contacted")}>Contacted</button>
+  <button onClick={() => updateStatus(lead.id, "Interested")}>Interested</button>
+  <button onClick={() => updateStatus(lead.id, "Closed")}>Closed</button>
+</td>
                     </tr>
                   ))}
                 </tbody>
