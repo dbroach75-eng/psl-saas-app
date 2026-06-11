@@ -326,6 +326,12 @@ const averageOverage = filtered.length
             <div className="stat"><b>${totalOverage.toLocaleString()}</b><span>Estimated Overage</span></div>
             <div className="stat"><b>{hotLeads}</b><span>Hot Leads</span></div>
           </div>
+          <div className="kpi-grid">
+  <div className="stat"><b>{statesCovered}</b><span>States Covered</span></div>
+  <div className="stat"><b>{countiesCovered}</b><span>Counties Covered</span></div>
+  <div className="stat"><b>${largestOverage.toLocaleString()}</b><span>Largest Overage</span></div>
+  <div className="stat"><b>${Math.round(averageOverage).toLocaleString()}</b><span>Average Overage</span></div>
+</div>
           <div className="analytics-card">
   <h2>Leads by State</h2>
 
