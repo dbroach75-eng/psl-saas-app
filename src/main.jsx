@@ -337,6 +337,16 @@ const statusCounts = filtered.reduce((acc, lead) => {
   <div className="stat"><b>${Math.round(averageOverage).toLocaleString()}</b><span>Average Overage</span></div>
 </div>
           <div className="analytics-card">
+  <h2>Lead Status Analytics</h2>
+
+  {["New", "Contacted", "Interested", "Closed"].map((status) => (
+    <div className="state-row" key={status}>
+      <span>{status}</span>
+      <strong>{statusCounts[status] || 0} Leads</strong>
+    </div>
+  ))}
+</div>
+          <div className="analytics-card">
   <h2>Leads by State</h2>
 
   {Object.entries(leadsByState).map(([state, count]) => (
