@@ -26,7 +26,8 @@ function App() {
   const [subscriptionStatus, setSubscriptionStatus] = useState("free");
   const [leads, setLeads] = useState(demoLeads);
   const [query, setQuery] = useState("");
-
+  const [favorites, setFavorites] = useState([]);
+  
   const filtered = useMemo(() => {
     const q = query.toLowerCase();
     return leads.filter(l =>
