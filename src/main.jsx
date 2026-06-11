@@ -27,13 +27,23 @@ function App() {
   const [leads, setLeads] = useState(demoLeads);
   const [query, setQuery] = useState("");
   const [favorites, setFavorites] = useState([]);
+  const [showHotLeads, setShowHotLeads] = useState(false);
   
-  const filtered = useMemo(() => {
-    const q = query.toLowerCase();
-    return leads.filter(l =>
-      `${l.owner} ${l.phone} ${l.state} ${l.county} ${l.address} ${l.status}`.toLowerCase().includes(q)
-    );
-  }, [query, leads]);
+const filtered = useMemo(() => {
+  const q = query.toLowerCase();
+
+  return leads.filter(l => {
+    const matchesSearch =
+      `${l.owner} ${l.phone} ${l.state} ${l.county} ${l.address} ${l.status}`
+        .toLowerCase()
+        .includes(q);
+
+    const matchesHotLead =
+      !showHotLeads || l.status === "Interested";
+
+    return matchesSearch && matchesHotLead;
+  });
+}, [query, leads, showHotLeads]);
 
   function loginAsInvestor() {
     setLoggedIn(true);
@@ -426,22 +436,28 @@ const statusCounts = filtered.reduce((acc, lead) => {
           <section className="panel">
             <div className="table-wrap">
               <div className="panel-head">
-                <input
-                  className="search"
-                  placeholder="🔍 Search by owner, phone, state, county, address, or status..."
-                  value={query}
-                  onChange={e => setQuery(e.target.value)}
-                />
+  <input
+    className="search"
+    placeholder="🔍 Search by owner, phone, state, county, address, or status..."
+    value={query}
+    onChange={e => setQuery(e.target.value)}
+  />
 
-                <span className="lead-count">
-                  {filtered.length} Leads Found
-                </span>
+  <button
+    className="primary"
+    onClick={() => setShowHotLeads(!showHotLeads)}
+  >
+    {showHotLeads ? "🔥 Hot Leads ON" : "🔥 Hot Leads OFF"}
+  </button>
 
-                <button className="primary" onClick={exportCSV}>
-                  Download CSV
-                </button>
-              </div>
+  <span className="lead-count">
+    {filtered.length} Leads Found
+  </span>
 
+  <button className="primary" onClick={exportCSV}>
+    Download CSV
+  </button>
+</div>
               <table>
                 <thead>
                   <tr>
