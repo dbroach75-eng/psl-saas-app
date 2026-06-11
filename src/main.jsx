@@ -356,6 +356,20 @@ const statusCounts = filtered.reduce((acc, lead) => {
     </div>
   ))}
 </div>
+          <div className="analytics-card">
+  <h2>⭐ Favorite Leads ({favoriteLeads.length})</h2>
+
+  {favoriteLeads.length === 0 ? (
+    <p>No favorites saved yet.</p>
+  ) : (
+    favoriteLeads.map((lead) => (
+      <div className="state-row" key={lead.id}>
+        <span>{lead.owner} ({lead.county})</span>
+        <strong>${lead.overage.toLocaleString()}</strong>
+      </div>
+    ))
+  )}
+</div>
  
           <div className="analytics-card">
   <h2>Leads by State</h2>
