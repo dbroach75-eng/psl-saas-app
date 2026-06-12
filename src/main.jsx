@@ -148,13 +148,13 @@ async function updateNote(id, note) {
     return;
   }
 
-  const { error } = await supabase
-    .from("lead_notes")
-    .insert({
-      lead_id: String(id),
-      user_email: userEmail,
-      note: note
-    });
+ const { error } = await supabase
+  .from("lead_notes")
+  .upsert({
+    lead_id: String(id),
+    user_email: userEmail,
+    note: note
+  });
 
   if (error) {
     alert("Note save error: " + error.message);
