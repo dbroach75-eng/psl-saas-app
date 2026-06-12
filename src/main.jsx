@@ -28,6 +28,7 @@ function App() {
   const [query, setQuery] = useState("");
   const [favorites, setFavorites] = useState([]);
   const [showHotLeads, setShowHotLeads] = useState(false);
+  const [notes, setNotes] = useState({});
   
 const filtered = useMemo(() => {
   const q = query.toLowerCase();
@@ -126,6 +127,12 @@ function toggleFavorite(id) {
       ? prev.filter(favId => favId !== id)
       : [...prev, id]
   );
+}
+  function updateNote(id, note) {
+  setNotes(prev => ({
+    ...prev,
+    [id]: note
+  }));
 }
   function addLead() {
     const id = leads.length + 1;
@@ -474,13 +481,29 @@ const statusCounts = filtered.reduce((acc, lead) => {
                       <td>{lead.address}</td>
                       <td>${lead.overage.toLocaleString()}</td>
                       <td><span className={`badge ${lead.status.toLowerCase()}`}>{lead.status}</span></td>
-                   <td>
+                 <td>
   <button onClick={() => toggleFavorite(lead.id)}>
     {favorites.includes(lead.id) ? "★ Saved" : "☆ Favorite"}
   </button>
-  <button onClick={() => updateStatus(lead.id, "Contacted")}>Contacted</button>
-  <button onClick={() => updateStatus(lead.id, "Interested")}>Interested</button>
-  <button onClick={() => updateStatus(lead.id, "Closed")}>Closed</button>
+
+  <button onClick={() => updateStatus(lead.id, "Contacted")}>
+    Contacted
+  </button>
+
+  <button onClick={() => updateStatus(lead.id, "Interested")}>
+    Interested
+  </button>
+
+  <button onClick={() => updateStatus(lead.id, "Closed")}>
+    Closed
+  </button>
+
+  <textarea
+    placeholder="Add note..."
+    value={notes[lead.id] || ""}
+    onChange={(e) => updateNote(lead.id, e.target.value)}
+    rows="2"
+  />
 </td>
                     </tr>
                   ))}
