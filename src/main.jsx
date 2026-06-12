@@ -147,12 +147,39 @@ setPage("dashboard");
   function updateStatus(id, status) {
     setLeads(leads.map(l => l.id === id ? { ...l, status } : l));
   }
-function toggleFavorite(id) {
-  setFavorites(prev =>
-    prev.includes(id)
-      ? prev.filter(favId => favId !== id)
-      : [...prev, id]
-  );
+async function toggleFavorite(id) {
+  const { data: userData } = await supabase.auth.getUser();
+  const userEmail = userData?.user?.email;
+
+  if (!userEmail) return;
+
+  if (favorites.includes(id)) {
+    await supabase
+      .from("lead_favorites")
+      .delete()
+      .eq("lead_id", String(id))
+      .eq("user_email", userEmail);
+
+    setFavorites(prev =>
+      prev.filter(favId => favId !== id)
+    );
+
+    return;
+  }
+
+  const { error } = await supabase
+    .from("lead_favorites")
+    .insert({
+      lead_id: String(id),
+      user_email: userEmail
+    });
+
+  if (error) {
+    alert("Favorite save error: " + error.message);
+    return;
+  }
+
+  setFavorites(prev => [...prev, id]);
 }
 async function updateNote(id, note) {
   setNotes(prev => ({
