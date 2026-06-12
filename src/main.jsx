@@ -493,7 +493,9 @@ const averageOverage = filtered.length
       0
     ) / filtered.length
   : 0;
-  
+ const activeSubscribers = users.filter(u => u.subscription_status === "active").length;
+const freeUsers = users.filter(u => u.subscription_status !== "active").length;
+const monthlyRevenue = activeSubscribers * 49; 
 const statusCounts = filtered.reduce((acc, lead) => {
   acc[lead.status] = (acc[lead.status] || 0) + 1;
   return acc;
