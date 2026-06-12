@@ -29,6 +29,7 @@ function App() {
   const [favorites, setFavorites] = useState([]);
   const [showHotLeads, setShowHotLeads] = useState(false);
   const [notes, setNotes] = useState({});
+  const [users, setUsers] = useState([]);
   
 const filtered = useMemo(() => {
   const q = query.toLowerCase();
@@ -92,6 +93,21 @@ async function loadSavedFavorites() {
   setFavorites(
     data.map(row => Number(row.lead_id))
   );
+}
+
+  async function loadUsers() {
+  if (!supabase) return;
+
+  const { data, error } = await supabase
+    .from("profiles")
+    .select("*");
+
+  if (error) {
+    alert("Load users error: " + error.message);
+    return;
+  }
+
+  setUsers(data || []);
 }
   function loginAsInvestor() {
     setLoggedIn(true);
@@ -157,6 +173,7 @@ setSubscriptionStatus(profile.subscription_status);
   
 await loadSavedNotes();
 await loadSavedFavorites();
+await loadUsers();
   
 setLoggedIn(true);
 setAdmin(false);
