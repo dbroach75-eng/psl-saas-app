@@ -128,11 +128,21 @@ function toggleFavorite(id) {
       : [...prev, id]
   );
 }
-  function updateNote(id, note) {
+async function updateNote(id, note) {
   setNotes(prev => ({
     ...prev,
     [id]: note
   }));
+
+  if (!supabase || !email) return;
+
+  await supabase
+    .from("lead_notes")
+    .upsert({
+      lead_id: String(id),
+      user_email: email,
+      note
+    });
 }
   function addLead() {
     const id = leads.length + 1;
