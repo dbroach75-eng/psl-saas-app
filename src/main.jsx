@@ -319,7 +319,11 @@ const statusCounts = filtered.reduce((acc, lead) => {
 >
   Upgrade to Starter Plan
 </a>
-
+<button onClick={() => setPage("terms")}>Terms</button>
+<button onClick={() => setPage("privacy")}>Privacy</button>
+<button onClick={() => setPage("refund")}>Refund Policy</button>
+<button onClick={() => setPage("disclaimer")}>Disclaimer</button>
+          
 <button onClick={logout}>Logout</button>
         </aside>
 
