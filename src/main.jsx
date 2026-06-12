@@ -183,10 +183,7 @@ async function updateNote(id, note) {
     alert("Note insert error: " + insertError.message);
   }
 }
-  if (error) {
-    alert("Note save error: " + error.message);
-  }
-}
+  
   function addLead() {
     const id = leads.length + 1;
     setLeads([...leads, {
