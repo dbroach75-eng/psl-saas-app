@@ -45,6 +45,32 @@ const filtered = useMemo(() => {
     return matchesSearch && matchesHotLead;
   });
 }, [query, leads, showHotLeads]);
+ async function loadSavedNotes() {
+  if (!supabase) return;
+
+  const { data: userData } = await supabase.auth.getUser();
+  const userEmail = userData?.user?.email;
+
+  if (!userEmail) return;
+
+  const { data, error } = await supabase
+    .from("lead_notes")
+    .select("lead_id, note")
+    .eq("user_email", userEmail);
+
+  if (error) {
+    alert("Load notes error: " + error.message);
+    return;
+  }
+
+  const loadedNotes = {};
+
+  data.forEach(row => {
+    loadedNotes[row.lead_id] = row.note;
+  });
+
+  setNotes(loadedNotes);
+} 
 
   function loginAsInvestor() {
     setLoggedIn(true);
@@ -107,10 +133,10 @@ if (profileError) {
 }
 
 setSubscriptionStatus(profile.subscription_status);
+await loadSavedNotes();
 setLoggedIn(true);
 setAdmin(false);
 setPage("dashboard");
-
 }
   function logout() {
     setLoggedIn(false);
