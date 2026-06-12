@@ -584,9 +584,20 @@ const statusCounts = filtered.reduce((acc, lead) => {
 <textarea
   placeholder="Add note..."
   value={notes[lead.id] || ""}
-  onChange={(e) => updateNote(lead.id, e.target.value)}
+  onChange={(e) =>
+    setNotes(prev => ({
+      ...prev,
+      [lead.id]: e.target.value
+    }))
+  }
   rows="2"
 />
+
+<button
+  onClick={() => updateNote(lead.id, notes[lead.id] || "")}
+>
+  Save Note
+</button>
 </td>
                     </tr>
                   ))}
