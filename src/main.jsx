@@ -140,7 +140,6 @@ async function updateNote(id, note) {
   }
 
   const { data: userData } = await supabase.auth.getUser();
-
   const userEmail = userData?.user?.email;
 
   if (!userEmail) {
@@ -148,24 +147,42 @@ async function updateNote(id, note) {
     return;
   }
 
-const { error } = await supabase
-  .from("lead_notes")
-  .upsert(
-    {
+  const { data: existingNotes, error: findError } = await supabase
+    .from("lead_notes")
+    .select("id")
+    .eq("lead_id", String(id))
+    .eq("user_email", userEmail);
+
+  if (findError) {
+    alert("Note find error: " + findError.message);
+    return;
+  }
+
+  if (existingNotes && existingNotes.length > 0) {
+    const { error: updateError } = await supabase
+      .from("lead_notes")
+      .update({ note: note })
+      .eq("id", existingNotes[0].id);
+
+    if (updateError) {
+      alert("Note update error: " + updateError.message);
+    }
+
+    return;
+  }
+
+  const { error: insertError } = await supabase
+    .from("lead_notes")
+    .insert({
       lead_id: String(id),
       user_email: userEmail,
       note: note
-    },
-    {
-      onConflict: "user_email,lead_id"
-    }
-  );
+    });
 
-if (error) {
-  alert("Note save error: " + error.message);
+  if (insertError) {
+    alert("Note insert error: " + insertError.message);
+  }
 }
-  );
-
   if (error) {
     alert("Note save error: " + error.message);
   }
