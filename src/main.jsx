@@ -134,15 +134,31 @@ async function updateNote(id, note) {
     [id]: note
   }));
 
-  if (!supabase || !email) return;
+  if (!supabase) {
+    alert("Supabase not connected");
+    return;
+  }
 
-  await supabase
+  const { data: userData } = await supabase.auth.getUser();
+
+  const userEmail = userData?.user?.email;
+
+  if (!userEmail) {
+    alert("No logged-in user email found");
+    return;
+  }
+
+  const { error } = await supabase
     .from("lead_notes")
-    .upsert({
+    .insert({
       lead_id: String(id),
-      user_email: email,
-      note
+      user_email: userEmail,
+      note: note
     });
+
+  if (error) {
+    alert("Note save error: " + error.message);
+  }
 }
   function addLead() {
     const id = leads.length + 1;
