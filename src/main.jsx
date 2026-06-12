@@ -161,6 +161,11 @@ const { error } = await supabase
     }
   );
 
+if (error) {
+  alert("Note save error: " + error.message);
+}
+  );
+
   if (error) {
     alert("Note save error: " + error.message);
   }
