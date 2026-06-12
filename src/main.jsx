@@ -611,18 +611,30 @@ const statusCounts = filtered.reduce((acc, lead) => {
   ))}
 </div>
 
-               {admin && (
-            <section className="panel">
-              <h2>Admin Tools</h2>
-              <button className="primary" onClick={addLead}>Add Demo Lead</button>
-              <input
-                type="file"
-                accept=".csv"
-                onChange={handleCSVUpload}
-              />
-              <p>This admin panel is ready for Supabase database connection later.</p>
-            </section>
-          )}
+          {admin && (
+  <section className="panel">
+    <h2>👑 Admin Dashboard</h2>
+
+    <div className="kpi-grid">
+      <div className="stat"><b>{leads.length}</b><span>Total Leads</span></div>
+      <div className="stat"><b>{favorites.length}</b><span>Total Favorites</span></div>
+      <div className="stat"><b>{Object.keys(notes).length}</b><span>Total Notes</span></div>
+      <div className="stat"><b>{filtered.length}</b><span>Visible Leads</span></div>
+    </div>
+
+    <h3>Lead Management</h3>
+
+    <button className="primary" onClick={addLead}>Add Demo Lead</button>
+
+    <input
+      type="file"
+      accept=".csv"
+      onChange={handleCSVUpload}
+    />
+
+    <p>Upload CSV lead files, review platform activity, and manage PSL lead data.</p>
+  </section>
+)}
 
           <section className="panel">
             <div className="table-wrap">
