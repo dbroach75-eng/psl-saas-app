@@ -581,10 +581,12 @@ const statusCounts = filtered.reduce((acc, lead) => {
     Closed
   </button>
 
-onChange={(e) => {
-  alert("Typing note");
-  updateNote(lead.id, e.target.value);
-}}
+<textarea
+  placeholder="Add note..."
+  value={notes[lead.id] || ""}
+  onChange={(e) => updateNote(lead.id, e.target.value)}
+  rows="2"
+/>
 </td>
                     </tr>
                   ))}
