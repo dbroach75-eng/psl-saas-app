@@ -148,13 +148,18 @@ async function updateNote(id, note) {
     return;
   }
 
- const { error } = await supabase
+const { error } = await supabase
   .from("lead_notes")
-  .upsert({
-    lead_id: String(id),
-    user_email: userEmail,
-    note: note
-  });
+  .upsert(
+    {
+      lead_id: String(id),
+      user_email: userEmail,
+      note: note
+    },
+    {
+      onConflict: "user_email,lead_id"
+    }
+  );
 
   if (error) {
     alert("Note save error: " + error.message);
