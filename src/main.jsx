@@ -71,7 +71,28 @@ const filtered = useMemo(() => {
 
   setNotes(loadedNotes);
 } 
+async function loadSavedFavorites() {
+  if (!supabase) return;
 
+  const { data: userData } = await supabase.auth.getUser();
+  const userEmail = userData?.user?.email;
+
+  if (!userEmail) return;
+
+  const { data, error } = await supabase
+    .from("lead_favorites")
+    .select("lead_id")
+    .eq("user_email", userEmail);
+
+  if (error) {
+    alert("Load favorites error: " + error.message);
+    return;
+  }
+
+  setFavorites(
+    data.map(row => Number(row.lead_id))
+  );
+}
   function loginAsInvestor() {
     setLoggedIn(true);
     setAdmin(false);
@@ -133,7 +154,10 @@ if (profileError) {
 }
 
 setSubscriptionStatus(profile.subscription_status);
+  
 await loadSavedNotes();
+await loadSavedFavorites();
+  
 setLoggedIn(true);
 setAdmin(false);
 setPage("dashboard");
