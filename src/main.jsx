@@ -557,6 +557,8 @@ const statusCounts = filtered.reduce((acc, lead) => {
             <div className="stat"><b>{leads.length}</b><span>Total Leads</span></div>
             <div className="stat"><b>${totalOverage.toLocaleString()}</b><span>Estimated Overage</span></div>
             <div className="stat"><b>{hotLeads}</b><span>Hot Leads</span></div>
+            <div className="stat"><b>{users.length}</b><span>Total Users</span></div>
+<div className="stat"><b>{users.filter(u => u.subscription_status === "active").length}</b><span>Active Subscribers</span></div>
           </div>
           <div className="kpi-grid">
   <div className="stat"><b>{statesCovered}</b><span>States Covered</span></div>
@@ -564,6 +566,26 @@ const statusCounts = filtered.reduce((acc, lead) => {
   <div className="stat"><b>${largestOverage.toLocaleString()}</b><span>Largest Overage</span></div>
   <div className="stat"><b>${Math.round(averageOverage).toLocaleString()}</b><span>Average Overage</span></div>
 </div>
+<h3>Platform Users</h3>
+
+<div className="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {users.map(user => (
+        <tr key={user.id}>
+          <td>{user.email}</td>
+          <td>{user.subscription_status}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>          
           <div className="analytics-card">
   <h2>Lead Status Analytics</h2>
 
