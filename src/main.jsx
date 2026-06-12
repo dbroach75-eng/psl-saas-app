@@ -238,6 +238,59 @@ if (page === "login") {
     </main>
   );
 }
+  if (page === "terms") {
+  return (
+    <main className="center">
+      <section className="login-card">
+        <h1>Terms of Service</h1>
+        <p>PSL Finance Hub provides foreclosure overage lead management tools for informational and business use only.</p>
+        <p>Users are responsible for verifying all lead data before taking action.</p>
+        <p>Use of this platform does not guarantee profits, successful claims, or recovery of funds.</p>
+        <button className="link" onClick={() => setPage("dashboard")}>Back to Dashboard</button>
+      </section>
+    </main>
+  );
+}
+
+if (page === "privacy") {
+  return (
+    <main className="center">
+      <section className="login-card">
+        <h1>Privacy Policy</h1>
+        <p>PSL Finance Hub collects account information, login details, uploaded lead data, and usage information needed to operate the platform.</p>
+        <p>We do not sell user account information. Users are responsible for handling uploaded lead data lawfully.</p>
+        <button className="link" onClick={() => setPage("dashboard")}>Back to Dashboard</button>
+      </section>
+    </main>
+  );
+}
+
+if (page === "refund") {
+  return (
+    <main className="center">
+      <section className="login-card">
+        <h1>Refund Policy</h1>
+        <p>Subscriptions are billed monthly. Users may cancel future billing according to Stripe subscription settings.</p>
+        <p>Refunds are reviewed case by case. Access may remain active until the end of the paid billing period.</p>
+        <button className="link" onClick={() => setPage("dashboard")}>Back to Dashboard</button>
+      </section>
+    </main>
+  );
+}
+
+if (page === "disclaimer") {
+  return (
+    <main className="center">
+      <section className="login-card">
+        <h1>Disclaimer</h1>
+        <p>PSL Finance Hub does not provide legal, financial, tax, or investment advice.</p>
+        <p>Lead data may contain errors or outdated information. Users must verify all information independently.</p>
+        <p>Users are responsible for complying with all applicable laws when contacting owners or using lead data.</p>
+        <button className="link" onClick={() => setPage("dashboard")}>Back to Dashboard</button>
+      </section>
+    </main>
+  );
+}
 if (page === "dashboard" && loggedIn) {
   if (subscriptionStatus !== "active") {
     return (
