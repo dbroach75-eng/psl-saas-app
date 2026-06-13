@@ -634,6 +634,29 @@ const statusCounts = filtered.reduce((acc, lead) => {
   <div className="stat"><b>${Math.round(averageOverage).toLocaleString()}</b><span>Average Overage</span></div>
           </div>
           <div className="analytics-card">
+  <h2>🎯 Daily Action Center</h2>
+
+  {priorityLeads.length === 0 ? (
+    <p>No priority follow-ups due.</p>
+  ) : (
+    priorityLeads.map(lead => (
+      <div className="state-row" key={lead.id}>
+        <span>
+          {lead.owner} • {lead.county}
+          <br />
+          Follow-Up: {followUps[lead.id]}
+        </span>
+
+        <div>
+          <strong>${lead.overage.toLocaleString()}</strong>
+          <br />
+          <a href={`tel:${lead.phone}`}>📞 Call First</a>
+        </div>
+      </div>
+    ))
+  )}
+</div>
+          <div className="analytics-card">
   <h2>🔔 Follow-Up Queue</h2>
 
   <div className="state-row">
