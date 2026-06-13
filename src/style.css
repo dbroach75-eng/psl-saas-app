@@ -91,3 +91,19 @@ td textarea {
 .activity-summary p {
   margin: 3px 0;
 }
+td .primary {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 6px;
+}
+
+td textarea {
+  min-width: 260px;
+}
+
+table th,
+table td {
+  vertical-align: top;
+}
