@@ -674,6 +674,25 @@ const statusCounts = filtered.reduce((acc, lead) => {
     ))
   )}
 </div>
+        <div className="analytics-card">
+  <h2>🏆 Top Leads Leaderboard</h2>
+
+  {topLeads.length === 0 ? (
+    <p>No leads available.</p>
+  ) : (
+    topLeads.map((lead, index) => (
+      <div className="state-row" key={lead.id}>
+        <span>
+          #{index + 1} {lead.owner}
+        </span>
+
+        <strong>
+          🔥 {getLeadScore(lead)}
+        </strong>
+      </div>
+    ))
+  )}
+</div>  
           <div className="analytics-card">
   <h2>🔔 Follow-Up Queue</h2>
 
