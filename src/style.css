@@ -81,3 +81,13 @@ td textarea {
   color: white;
   resize: vertical;
 }
+.activity-summary {
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #cbd5e1;
+}
+
+.activity-summary p {
+  margin: 3px 0;
+}
