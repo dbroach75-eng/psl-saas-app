@@ -557,24 +557,23 @@ const dueLeads = leads.filter(lead => {
   function getLeadScore(lead) {
   let score = 0;
 
-  if (favorites.includes(lead.id)) score += 50;
-  if (followUps[lead.id] === today) score += 25;
-  if (lead.status === "Interested") score += 15;
-  if (notes[lead.id]) score += 10;
+ if (favorites.includes(lead.id)) score += 50;
+if (followUps[lead.id] === today) score += 25;
+if (lead.status === "Interested") score += 15;
+if (notes[lead.id]) score += 10;
 
-  return score;
+return score;
 }
-  const followUpDate = followUps[lead.id];
 
-  return (
-    followUpDate &&
-    (followUpDate === today || followUpDate < today)
-  );
-});
+const topLeads = [...filtered]
+  .sort((a, b) => getLeadScore(b) - getLeadScore(a))
+  .slice(0, 10);
+
 const statusCounts = filtered.reduce((acc, lead) => {
   acc[lead.status] = (acc[lead.status] || 0) + 1;
   return acc;
 }, {});
+  
   const favoriteLeads = filtered.filter(lead =>
   favorites.includes(lead.id)
 );
