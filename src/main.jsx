@@ -694,9 +694,11 @@ const statusCounts = filtered.reduce((acc, lead) => {
           #{index + 1} {lead.owner}
         </span>
 
-        <strong>
-          🔥 {getLeadScore(lead)}
-        </strong>
+      <div>
+  <strong>🔥 {getLeadScore(lead)}</strong>
+  <br />
+  <span>{getLeadTier(lead)}</span>
+</div>
       </div>
     ))
   )}
