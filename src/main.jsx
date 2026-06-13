@@ -580,6 +580,20 @@ const dueLeads = leads.filter(lead => {
 const priorityLeads = dueLeads
   .sort((a, b) => Number(b.overage) - Number(a.overage))
   .slice(0, 5);
+  
+  const today = new Date().toISOString().split("T")[0];
+
+const dueToday = Object.values(followUps).filter(
+  date => date === today
+).length;
+
+const overdueFollowUps = Object.values(followUps).filter(
+  date => date && date < today
+).length;
+
+const upcomingFollowUps = Object.values(followUps).filter(
+  date => date && date > today
+).length;
 
 function getLeadScore(lead) {
   let score = 0;
