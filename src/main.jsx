@@ -797,16 +797,20 @@ const statusCounts = filtered.reduce((acc, lead) => {
 >
   Save Note
 </button>
-                  <input
+<input
   type="date"
   value={followUps[lead.id] || ""}
-  onChange={(e) =>
+  onChange={(e) => {
+    const date = e.target.value;
+
     setFollowUps(prev => ({
       ...prev,
-      [lead.id]: e.target.value
-    }))
-  }
-/> 
+      [lead.id]: date
+    }));
+
+    saveFollowUp(lead.id, date);
+  }}
+/>
 </td>
                     </tr>
                   ))}
