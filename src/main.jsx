@@ -902,7 +902,17 @@ const statusCounts = filtered.reduce((acc, lead) => {
                       <td>{lead.county}</td>
                       <td>{lead.address}</td>
                       <td>${lead.overage.toLocaleString()}</td>
-                      <td><span className={`badge ${lead.status.toLowerCase()}`}>{lead.status}</span></td>
+                     <td>
+  <span className={`badge ${lead.status.toLowerCase()}`}>
+    {lead.status}
+  </span>
+
+  <div className="activity-summary">
+    {favorites.includes(lead.id) && <p>⭐ Favorited</p>}
+    {notes[lead.id] && <p>📝 Note saved</p>}
+    {followUps[lead.id] && <p>🔔 Follow-up: {followUps[lead.id]}</p>}
+  </div>
+</td>
                  <td>
   <button onClick={() => toggleFavorite(lead.id)}>
     {favorites.includes(lead.id) ? "★ Saved" : "☆ Favorite"}
