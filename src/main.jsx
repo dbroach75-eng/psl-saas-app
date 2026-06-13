@@ -586,6 +586,9 @@ function getLeadTier(lead) {
 const topLeads = [...filtered]
   .sort((a, b) => getLeadScore(b) - getLeadScore(a))
   .slice(0, 10);
+  const urgentLeads = [...filtered]
+  .filter(lead => getLeadScore(lead) >= 100)
+  .sort((a, b) => getLeadScore(b) - getLeadScore(a));
 
 const statusCounts = filtered.reduce((acc, lead) => {
   acc[lead.status] = (acc[lead.status] || 0) + 1;
