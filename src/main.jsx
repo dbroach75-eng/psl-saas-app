@@ -548,6 +548,19 @@ const averageOverage = filtered.length
  const activeSubscribers = users.filter(u => u.subscription_status === "active").length;
 const freeUsers = users.filter(u => u.subscription_status !== "active").length;
 const monthlyRevenue = activeSubscribers * 49; 
+  const today = new Date().toISOString().split("T")[0];
+
+const dueToday = Object.values(followUps).filter(
+  date => date === today
+).length;
+
+const overdueFollowUps = Object.values(followUps).filter(
+  date => date && date < today
+).length;
+
+const upcomingFollowUps = Object.values(followUps).filter(
+  date => date && date > today
+).length;
 const statusCounts = filtered.reduce((acc, lead) => {
   acc[lead.status] = (acc[lead.status] || 0) + 1;
   return acc;
