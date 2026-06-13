@@ -920,11 +920,12 @@ const statusCounts = filtered.reduce((acc, lead) => {
     {favorites.includes(lead.id) && <p>⭐ Favorited</p>}
     {notes[lead.id] && <p>📝 Note saved</p>}
     {followUps[lead.id] && <p>🔔 Follow-up: {followUps[lead.id]}</p>}
-  </div>
-                            <td>
-     <td>
+ </div>
+</td>
+
+<td>
   🔥 {getLeadScore(lead)}
-    </td>
+</td>
                                    <td>
   <button onClick={() => toggleFavorite(lead.id)}>
     {favorites.includes(lead.id) ? "★ Saved" : "☆ Favorite"}
