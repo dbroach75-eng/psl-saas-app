@@ -573,9 +573,10 @@ function getLeadScore(lead) {
 
   return score;
 }
-  function getLeadTier(lead) {
+function getLeadTier(lead) {
   const score = getLeadScore(lead);
 
+  if (score >= 100) return "🔥 Platinum";
   if (score >= 75) return "🥇 Gold";
   if (score >= 40) return "🥈 Silver";
 
