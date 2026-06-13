@@ -686,6 +686,29 @@ const statusCounts = filtered.reduce((acc, lead) => {
     ))
   )}
 </div>
+         <div className="analytics-card">
+  <h2>🚨 Urgent Lead Dashboard</h2>
+
+  {urgentLeads.length === 0 ? (
+    <p>No Platinum leads yet.</p>
+  ) : (
+    urgentLeads.map(lead => (
+      <div className="state-row" key={lead.id}>
+        <span>
+          {lead.owner} • {lead.county}
+          <br />
+          {getLeadTier(lead)}
+        </span>
+
+        <div>
+          <strong>🔥 {getLeadScore(lead)}</strong>
+          <br />
+          <a href={`tel:${lead.phone}`}>📞 Call Now</a>
+        </div>
+      </div>
+    ))
+  )}
+</div> 
         <div className="analytics-card">
   <h2>🏆 Top Leads Leaderboard</h2>
 
