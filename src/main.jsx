@@ -95,7 +95,32 @@ async function loadSavedFavorites() {
     data.map(row => Number(row.lead_id))
   );
 }
+async function loadSavedFollowUps() {
+  if (!supabase) return;
 
+  const { data: userData } = await supabase.auth.getUser();
+  const userEmail = userData?.user?.email;
+
+  if (!userEmail) return;
+
+  const { data, error } = await supabase
+    .from("lead_followups")
+    .select("lead_id, follow_up_date")
+    .eq("user_email", userEmail);
+
+  if (error) {
+    alert("Load follow-ups error: " + error.message);
+    return;
+  }
+
+  const loadedFollowUps = {};
+
+  data.forEach(row => {
+    loadedFollowUps[row.lead_id] = row.follow_up_date;
+  });
+
+  setFollowUps(loadedFollowUps);
+}
   async function loadUsers() {
   if (!supabase) return;
 
@@ -174,6 +199,7 @@ setSubscriptionStatus(profile.subscription_status);
   
 await loadSavedNotes();
 await loadSavedFavorites();
+await loadSavedFollowUps();
 await loadUsers();
   
 setLoggedIn(true);
