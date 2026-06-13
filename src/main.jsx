@@ -632,6 +632,24 @@ const statusCounts = filtered.reduce((acc, lead) => {
   <div className="stat"><b>{countiesCovered}</b><span>Counties Covered</span></div>
   <div className="stat"><b>${largestOverage.toLocaleString()}</b><span>Largest Overage</span></div>
   <div className="stat"><b>${Math.round(averageOverage).toLocaleString()}</b><span>Average Overage</span></div>
+          </div>
+          <div className="analytics-card">
+  <h2>🔔 Follow-Up Queue</h2>
+
+  <div className="state-row">
+    <span>Due Today</span>
+    <strong>{dueToday} Leads</strong>
+  </div>
+
+  <div className="state-row">
+    <span>Overdue</span>
+    <strong>{overdueFollowUps} Leads</strong>
+  </div>
+
+  <div className="state-row">
+    <span>Upcoming</span>
+    <strong>{upcomingFollowUps} Leads</strong>
+  </div>
 </div>
           <h3>💰 Revenue Dashboard</h3>
 
