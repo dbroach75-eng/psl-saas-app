@@ -390,10 +390,6 @@ const importedLeads = rows
   });
 
 setLeads([...leads, ...importedLeads]);
-
-importedLeads.forEach(async (lead) => {
-  await saveLead(lead);
-});
   };
 
   reader.readAsText(file);
