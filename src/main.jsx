@@ -765,9 +765,17 @@ const statusCounts = filtered.reduce((acc, lead) => {
         {lead.owner} ({lead.county})
       </span>
 
-      <strong>
-        ${lead.overage.toLocaleString()}
-      </strong>
+     <div>
+  <strong>
+    ${lead.overage.toLocaleString()}
+  </strong>
+
+  <br />
+
+  <a href={`tel:${lead.phone}`}>
+    📞 Call Now
+  </a>
+</div>
     </div>
   ))}
 </div>
@@ -832,7 +840,20 @@ const statusCounts = filtered.reduce((acc, lead) => {
                   {filtered.map(lead => (
                     <tr key={lead.id}>
                       <td>{lead.owner}</td>
-                      <td><a href={`tel:${lead.phone}`}>{lead.phone}</a></td>
+                   <td>
+  <a href={`tel:${lead.phone}`}>
+    {lead.phone}
+  </a>
+
+  <br />
+
+  <a
+    href={`tel:${lead.phone}`}
+    className="primary"
+  >
+    📞 Call
+  </a>
+</td>
                       <td>{lead.state}</td>
                       <td>{lead.county}</td>
                       <td>{lead.address}</td>
