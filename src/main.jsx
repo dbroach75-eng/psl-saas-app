@@ -551,18 +551,27 @@ const monthlyRevenue = activeSubscribers * 49;
   const today = new Date().toISOString().split("T")[0];
 
 const dueLeads = leads.filter(lead => {
-  const priorityLeads = dueLeads
+  const followUpDate = followUps[lead.id];
+
+  return (
+    followUpDate &&
+    (followUpDate === today || followUpDate < today)
+  );
+});
+
+const priorityLeads = dueLeads
   .sort((a, b) => Number(b.overage) - Number(a.overage))
   .slice(0, 5);
-  function getLeadScore(lead) {
+
+function getLeadScore(lead) {
   let score = 0;
 
- if (favorites.includes(lead.id)) score += 50;
-if (followUps[lead.id] === today) score += 25;
-if (lead.status === "Interested") score += 15;
-if (notes[lead.id]) score += 10;
+  if (favorites.includes(lead.id)) score += 50;
+  if (followUps[lead.id] === today) score += 25;
+  if (lead.status === "Interested") score += 15;
+  if (notes[lead.id]) score += 10;
 
-return score;
+  return score;
 }
 
 const topLeads = [...filtered]
