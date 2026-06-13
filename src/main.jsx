@@ -573,6 +573,14 @@ function getLeadScore(lead) {
 
   return score;
 }
+  function getLeadTier(lead) {
+  const score = getLeadScore(lead);
+
+  if (score >= 75) return "🥇 Gold";
+  if (score >= 40) return "🥈 Silver";
+
+  return "🥉 Bronze";
+}
 
 const topLeads = [...filtered]
   .sort((a, b) => getLeadScore(b) - getLeadScore(a))
