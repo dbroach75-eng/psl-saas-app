@@ -840,7 +840,7 @@ const statusCounts = filtered.reduce((acc, lead) => {
                   {filtered.map(lead => (
                     <tr key={lead.id}>
                       <td>{lead.owner}</td>
-                   <td>
+        <td>
   <a href={`tel:${lead.phone}`}>
     {lead.phone}
   </a>
@@ -852,6 +852,24 @@ const statusCounts = filtered.reduce((acc, lead) => {
     className="primary"
   >
     📞 Call
+  </a>
+
+  <br />
+
+  <a
+    href={`mailto:?subject=Property Funds Inquiry`}
+    className="primary"
+  >
+    📧 Email
+  </a>
+
+  <br />
+
+  <a
+    href={`sms:${lead.phone}`}
+    className="primary"
+  >
+    💬 SMS
   </a>
 </td>
                       <td>{lead.state}</td>
