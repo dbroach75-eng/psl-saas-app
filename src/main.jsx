@@ -329,7 +329,25 @@ async function updateNote(id, note) {
     alert("Follow-up save error: " + error.message);
   }
 }
-  
+ async function saveLead(lead) {
+  if (!supabase) return;
+
+  const { error } = await supabase
+    .from("leads")
+    .insert({
+      owner: lead.owner,
+      phone: lead.phone,
+      state: lead.state,
+      county: lead.county,
+      address: lead.address,
+      overage: lead.overage,
+      status: lead.status || "New"
+    });
+
+  if (error) {
+    alert("Lead save error: " + error.message);
+  }
+} 
   function addLead() {
     const id = leads.length + 1;
     setLeads([...leads, {
