@@ -648,6 +648,27 @@ const statusCounts = filtered.reduce((acc, lead) => {
     <strong>{upcomingFollowUps} Leads</strong>
   </div>
 </div>
+         <div className="analytics-card">
+  <h2>📋 Follow-Up Details</h2>
+
+  {dueLeads.length === 0 ? (
+    <p>No follow-ups due.</p>
+  ) : (
+    dueLeads.map(lead => (
+      <div className="state-row" key={lead.id}>
+        <span>
+          {lead.owner} • {lead.county}
+          <br />
+          Follow-Up: {followUps[lead.id]}
+        </span>
+
+        <strong>
+          ${lead.overage.toLocaleString()}
+        </strong>
+      </div>
+    ))
+  )}
+</div> 
           <h3>💰 Revenue Dashboard</h3>
 
 <div className="kpi-grid">
