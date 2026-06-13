@@ -554,6 +554,16 @@ const dueLeads = leads.filter(lead => {
   const priorityLeads = dueLeads
   .sort((a, b) => Number(b.overage) - Number(a.overage))
   .slice(0, 5);
+  function getLeadScore(lead) {
+  let score = 0;
+
+  if (favorites.includes(lead.id)) score += 50;
+  if (followUps[lead.id] === today) score += 25;
+  if (lead.status === "Interested") score += 15;
+  if (notes[lead.id]) score += 10;
+
+  return score;
+}
   const followUpDate = followUps[lead.id];
 
   return (
@@ -858,8 +868,7 @@ const statusCounts = filtered.reduce((acc, lead) => {
 </div>
               <table>
                 <thead>
-                  <tr>
-                    <th>Owner</th><th>Phone</th><th>State</th><th>County</th><th>Address</th><th>Overage</th><th>Status</th><th>Actions</th>
+                  <tr><th>Owner</th><th>Phone</th><th>State</th><th>County</th><th>Address</th><th>Overage</th><th>Status</th><th>Score</th><th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -912,8 +921,11 @@ const statusCounts = filtered.reduce((acc, lead) => {
     {notes[lead.id] && <p>📝 Note saved</p>}
     {followUps[lead.id] && <p>🔔 Follow-up: {followUps[lead.id]}</p>}
   </div>
-</td>
-                 <td>
+                            <td>
+     <td>
+  🔥 {getLeadScore(lead)}
+    </td>
+                                   <td>
   <button onClick={() => toggleFavorite(lead.id)}>
     {favorites.includes(lead.id) ? "★ Saved" : "☆ Favorite"}
   </button>
