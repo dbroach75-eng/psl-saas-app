@@ -30,6 +30,7 @@ function App() {
   const [showHotLeads, setShowHotLeads] = useState(false);
   const [notes, setNotes] = useState({});
   const [users, setUsers] = useState([]);
+  const [followUps, setFollowUps] = useState({});
   
 const filtered = useMemo(() => {
   const q = query.toLowerCase();
@@ -771,6 +772,16 @@ const statusCounts = filtered.reduce((acc, lead) => {
 >
   Save Note
 </button>
+                  <input
+  type="date"
+  value={followUps[lead.id] || ""}
+  onChange={(e) =>
+    setFollowUps(prev => ({
+      ...prev,
+      [lead.id]: e.target.value
+    }))
+  }
+/> 
 </td>
                     </tr>
                   ))}
