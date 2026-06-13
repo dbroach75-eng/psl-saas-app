@@ -372,24 +372,28 @@ async function updateNote(id, note) {
     const text = e.target.result;
     const rows = text.split("\n").slice(1);
 
-    const importedLeads = rows
-      .filter(row => row.trim() !== "")
-      .map((row, index) => {
-        const columns = row.split(",");
+const importedLeads = rows
+  .filter(row => row.trim() !== "")
+  .map((row, index) => {
+    const columns = row.split(",");
 
-        return {
-          id: leads.length + index + 1,
-          owner: columns[0] || "",
-          phone: columns[1] || "",
-          state: columns[2] || "",
-          county: columns[3] || "",
-          address: columns[4] || "",
-          overage: Number(columns[5]) || 0,
-          status: columns[6] || "New"
-        };
-      });
+    return {
+      id: leads.length + index + 1,
+      owner: columns[0] || "",
+      phone: columns[1] || "",
+      state: columns[2] || "",
+      county: columns[3] || "",
+      address: columns[4] || "",
+      overage: Number(columns[5]) || 0,
+      status: columns[6] || "New"
+    };
+  });
 
-    setLeads([...leads, ...importedLeads]);
+setLeads([...leads, ...importedLeads]);
+
+importedLeads.forEach(async (lead) => {
+  await saveLead(lead);
+});
   };
 
   reader.readAsText(file);
