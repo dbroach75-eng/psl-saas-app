@@ -278,6 +278,31 @@ async function updateNote(id, note) {
     alert("Note insert error: " + insertError.message);
   }
 }
+  async function saveFollowUp(id, date) {
+  if (!supabase) return;
+
+  const { data: userData } = await supabase.auth.getUser();
+  const userEmail = userData?.user?.email;
+
+  if (!userEmail) return;
+
+  const { error } = await supabase
+    .from("lead_followups")
+    .upsert(
+      {
+        lead_id: String(id),
+        user_email: userEmail,
+        follow_up_date: date
+      },
+      {
+        onConflict: "user_email,lead_id"
+      }
+    );
+
+  if (error) {
+    alert("Follow-up save error: " + error.message);
+  }
+}
   
   function addLead() {
     const id = leads.length + 1;
