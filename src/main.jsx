@@ -551,6 +551,9 @@ const monthlyRevenue = activeSubscribers * 49;
   const today = new Date().toISOString().split("T")[0];
 
 const dueLeads = leads.filter(lead => {
+  const priorityLeads = dueLeads
+  .sort((a, b) => Number(b.overage) - Number(a.overage))
+  .slice(0, 5);
   const followUpDate = followUps[lead.id];
 
   return (
