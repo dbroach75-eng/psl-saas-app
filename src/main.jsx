@@ -637,6 +637,22 @@ const conversionRate =
   
   const priorityCallsCount = priorityLeads.length;
 const urgentLeadCount = urgentLeads.length;
+  let performanceScore = 0;
+  
+  let performanceGrade = "F";
+
+if (performanceScore >= 90) performanceGrade = "A";
+else if (performanceScore >= 80) performanceGrade = "B";
+else if (performanceScore >= 70) performanceGrade = "C";
+else if (performanceScore >= 60) performanceGrade = "D";
+
+performanceScore += closedCount * 20;
+performanceScore += interestedCount * 10;
+performanceScore += contactedCount * 5;
+
+if (performanceScore > 100) {
+  performanceScore = 100;
+}
   
   const favoriteLeads = filtered.filter(lead =>
   favorites.includes(lead.id)
