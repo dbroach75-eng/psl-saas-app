@@ -717,7 +717,7 @@ if (performanceScore > 100) {
   <p><strong>Access:</strong> Investor Dashboard + CSV Export</p>
            <a
   className="manage-subscription"
-  href="https://billing.stripe.com/p/login/3cIbJ30n6a3ofNydRsabK00
+ href="https://dashboard.stripe.com/test/customers"
   target="_blank"
   rel="noopener noreferrer"
 >
