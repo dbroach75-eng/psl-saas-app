@@ -888,6 +888,20 @@ if (performanceScore > 100) {
   </div>
 </div>
           <div className="analytics-card">
+  <h2>🏅 Achievements</h2>
+
+  {achievements.length === 0 ? (
+    <p>No achievements unlocked yet.</p>
+  ) : (
+    achievements.map((achievement, index) => (
+      <div className="state-row" key={index}>
+        <span>{achievement}</span>
+        <strong>Unlocked</strong>
+      </div>
+    ))
+  )}
+</div>
+          <div className="analytics-card">
   <h2>📅 Today's Tasks</h2>
 
   <div className="stats-grid">
