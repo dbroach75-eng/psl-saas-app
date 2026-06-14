@@ -635,6 +635,9 @@ const conversionRate =
     ? ((closedCount / filtered.length) * 100).toFixed(1)
     : 0;
   
+  const priorityCallsCount = priorityLeads.length;
+const urgentLeadCount = urgentLeads.length;
+  
   const favoriteLeads = filtered.filter(lead =>
   favorites.includes(lead.id)
 );
