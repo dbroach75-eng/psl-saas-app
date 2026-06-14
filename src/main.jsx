@@ -645,6 +645,22 @@ if (performanceScore >= 90) performanceGrade = "A";
 else if (performanceScore >= 80) performanceGrade = "B";
 else if (performanceScore >= 70) performanceGrade = "C";
 else if (performanceScore >= 60) performanceGrade = "D";
+  const achievements = [];
+
+if (contactedCount >= 1)
+  achievements.push("📞 First Contact");
+
+if (interestedCount >= 1)
+  achievements.push("🎯 Lead Hunter");
+
+if (closedCount >= 1)
+  achievements.push("💰 First Deal");
+
+if (urgentLeadCount >= 1)
+  achievements.push("🔥 Platinum Hunter");
+
+if (dueToday >= 1)
+  achievements.push("🔔 Follow-Up Master");
 
 performanceScore += closedCount * 20;
 performanceScore += interestedCount * 10;
