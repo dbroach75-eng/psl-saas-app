@@ -827,7 +827,36 @@ const conversionRate =
     <span>Free Users</span>
   </div>
 </div>
-          
+ <div className="analytics-card">
+  <h2>📈 Conversion Dashboard</h2>
+
+  <div className="stats-grid">
+    <div className="stat-card">
+      <h3>{newLeadsCount}</h3>
+      <p>New Leads</p>
+    </div>
+
+    <div className="stat-card">
+      <h3>{contactedCount}</h3>
+      <p>Contacted</p>
+    </div>
+
+    <div className="stat-card">
+      <h3>{interestedCount}</h3>
+      <p>Interested</p>
+    </div>
+
+    <div className="stat-card">
+      <h3>{closedCount}</h3>
+      <p>Closed</p>
+    </div>
+
+    <div className="stat-card">
+      <h3>{conversionRate}%</h3>
+      <p>Conversion Rate</p>
+    </div>
+  </div>
+</div>         
 <h3>Platform Users</h3>
 
 <div className="table-wrap">
