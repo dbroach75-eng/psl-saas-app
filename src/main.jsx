@@ -830,6 +830,27 @@ const urgentLeadCount = urgentLeads.length;
     <span>Free Users</span>
   </div>
 </div>
+          <div className="analytics-card">
+  <h2>📅 Today's Tasks</h2>
+
+  <div className="stats-grid">
+    <div className="stat-card">
+      <h3>{dueToday}</h3>
+      <p>🔔 Follow-Ups Due Today</p>
+    </div>
+
+    <div className="stat-card">
+      <h3>{urgentLeadCount}</h3>
+      <p>🚨 Platinum Leads</p>
+    </div>
+
+    <div className="stat-card">
+      <h3>{priorityCallsCount}</h3>
+      <p>📞 Priority Calls</p>
+    </div>
+  </div>
+</div>
+          
  <div className="analytics-card">
   <h2>📈 Conversion Dashboard</h2>
 
