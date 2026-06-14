@@ -847,6 +847,31 @@ if (performanceScore > 100) {
   </div>
 </div>
           <div className="analytics-card">
+  <h2>📊 Performance Scorecard</h2>
+
+  <div className="stats-grid">
+    <div className="stat-card">
+      <h3>{performanceScore}</h3>
+      <p>Performance Score</p>
+    </div>
+
+    <div className="stat-card">
+      <h3>{performanceGrade}</h3>
+      <p>Letter Grade</p>
+    </div>
+
+    <div className="stat-card">
+      <h3>{conversionRate}%</h3>
+      <p>Conversion Rate</p>
+    </div>
+
+    <div className="stat-card">
+      <h3>{closedCount}</h3>
+      <p>Closed Deals</p>
+    </div>
+  </div>
+</div>
+          <div className="analytics-card">
   <h2>📅 Today's Tasks</h2>
 
   <div className="stats-grid">
