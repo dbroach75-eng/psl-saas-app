@@ -625,6 +625,16 @@ const statusCounts = filtered.reduce((acc, lead) => {
   return acc;
 }, {});
   
+  const newLeadsCount = statusCounts["New"] || 0;
+const contactedCount = statusCounts["Contacted"] || 0;
+const interestedCount = statusCounts["Interested"] || 0;
+const closedCount = statusCounts["Closed"] || 0;
+
+const conversionRate =
+  filtered.length > 0
+    ? ((closedCount / filtered.length) * 100).toFixed(1)
+    : 0;
+  
   const favoriteLeads = filtered.filter(lead =>
   favorites.includes(lead.id)
 );
