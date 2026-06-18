@@ -329,10 +329,13 @@ async function updateNote(id, note) {
     alert("Follow-up save error: " + error.message);
   }
 }
- async function saveLead(lead) {
-  if (!supabase) return;
+async function saveLead(lead) {
+  if (!supabase) {
+    alert("Supabase not connected");
+    return;
+  }
 
-  const { error } = await supabase
+  const { data, error } = await supabase
     .from("leads")
     .insert({
       owner: lead.owner,
@@ -342,12 +345,16 @@ async function updateNote(id, note) {
       address: lead.address,
       overage: lead.overage,
       status: lead.status || "New"
-    });
+    })
+    .select();
 
   if (error) {
     alert("Lead save error: " + error.message);
+    return;
   }
-} 
+
+  alert("Lead saved: " + lead.owner);
+}
   function addLead() {
     const id = leads.length + 1;
     setLeads([...leads, {
