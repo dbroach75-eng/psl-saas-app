@@ -734,19 +734,43 @@ if (performanceScore > 100) {
 </p>
   </div>
 </div>
-          <div className="account-card">
+        <div className="account-card">
   <h2>Account Summary</h2>
   <p><strong>Plan:</strong> Starter</p>
   <p><strong>Status:</strong> Active</p>
   <p><strong>Access:</strong> Investor Dashboard + CSV Export</p>
-       <a
-  className="manage-subscription"
-  href="https://checkout.pslfinancehub.com/p/login/3cIbJ30n6a3ofNydRsabK00"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  Manage Subscription
-</a>
+
+  <button
+    className="manage-subscription"
+    onClick={async () => {
+      const profile = users.find(u => u.email === email);
+
+      if (!profile?.stripe_customer_id) {
+        alert("No Stripe customer ID found for this account.");
+        return;
+      }
+
+      const response = await fetch("/api/create-portal-session", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          customerId: profile.stripe_customer_id
+        })
+      });
+
+      const data = await response.json();
+
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert(data.error || "Could not open billing portal.");
+      }
+    }}
+  >
+    Manage Subscription
+  </button>
 </div>
 
           <div className="stats">
