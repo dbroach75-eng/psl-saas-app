@@ -135,6 +135,20 @@ async function loadSavedFollowUps() {
 
   setUsers(data || []);
 }
+  async function loadSavedLeads() {
+  if (!supabase) return;
+
+  const { data, error } = await supabase
+    .from("leads")
+    .select("*");
+
+  if (error) {
+    alert("Load leads error: " + error.message);
+    return;
+  }
+
+  setLeads(data || []);
+}
   function loginAsInvestor() {
     setLoggedIn(true);
     setAdmin(false);
@@ -200,6 +214,7 @@ setSubscriptionStatus(profile.subscription_status);
 await loadSavedNotes();
 await loadSavedFavorites();
 await loadSavedFollowUps();
+await loadSavedLeads();
 await loadUsers();
   
 setLoggedIn(true);
