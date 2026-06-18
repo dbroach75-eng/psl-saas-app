@@ -361,7 +361,7 @@ async function updateNote(id, note) {
       status: "New"
     }]);
   }
-  function handleCSVUpload(event) {
+function handleCSVUpload(event) {
   const file = event.target.files[0];
 
   if (!file) return;
@@ -372,32 +372,32 @@ async function updateNote(id, note) {
     const text = e.target.result;
     const rows = text.split("\n").slice(1);
 
-const importedLeads = rows
-  .filter(row => row.trim() !== "")
-  .map((row, index) => {
-    const columns = row.split(",");
+    const importedLeads = rows
+      .filter(row => row.trim() !== "")
+      .map((row, index) => {
+        const columns = row.split(",");
 
-    return {
-      id: leads.length + index + 1,
-      owner: columns[0] || "",
-      phone: columns[1] || "",
-      state: columns[2] || "",
-      county: columns[3] || "",
-      address: columns[4] || "",
-      overage: Number(columns[5]) || 0,
-      status: columns[6] || "New"
-    };
-  });
-    
-   setLeads([...leads, ...importedLeads]); 
+        return {
+          id: leads.length + index + 1,
+          owner: columns[0] || "",
+          phone: columns[1] || "",
+          state: columns[2] || "",
+          county: columns[3] || "",
+          address: columns[4] || "",
+          overage: Number(columns[5]) || 0,
+          status: columns[6] || "New"
+        };
+      });
 
-importedLeads.forEach((lead) => {
-  saveLead(lead);
-});
+    setLeads([...leads, ...importedLeads]);
+
+    importedLeads.forEach((lead) => {
+      saveLead(lead);
+    });
+  };
 
   reader.readAsText(file);
 }
-
   function exportCSV() {
     const rows = [
       ["Owner", "Phone", "State", "County", "Address", "Estimated Overage", "Status"],
