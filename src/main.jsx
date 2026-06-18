@@ -388,12 +388,12 @@ const importedLeads = rows
       status: columns[6] || "New"
     };
   });
-
-setLeads([...leads, ...importedLeads]);
     
-    importedLeads.forEach((lead) => {
+   setLeads([...leads, ...importedLeads]); 
+
+importedLeads.forEach((lead) => {
   saveLead(lead);
-  };
+});
 
   reader.readAsText(file);
 }
