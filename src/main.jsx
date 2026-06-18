@@ -395,7 +395,9 @@ function handleCSVUpload(event) {
           status: columns[6] || "New"
         };
       });
-
+    
+alert("CSV Upload Fired");
+    
     setLeads([...leads, ...importedLeads]);
 
     importedLeads.forEach((lead) => {
