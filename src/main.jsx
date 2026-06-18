@@ -352,8 +352,6 @@ async function saveLead(lead) {
     alert("Lead save error: " + error.message);
     return;
   }
-
-  alert("Lead saved: " + lead.owner);
 }
   function addLead() {
     const id = leads.length + 1;
@@ -396,12 +394,10 @@ function handleCSVUpload(event) {
         };
       });
     
-alert("CSV Upload Fired");
-    
-    setLeads([...leads, ...importedLeads]);
+
+     setLeads([...leads, ...importedLeads]);
 
  importedLeads.forEach((lead) => {
-  alert("Calling saveLead for " + lead.owner);
   saveLead(lead);
 });
   };
