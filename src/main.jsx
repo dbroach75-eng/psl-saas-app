@@ -739,14 +739,14 @@ if (performanceScore > 100) {
   <p><strong>Plan:</strong> Starter</p>
   <p><strong>Status:</strong> Active</p>
   <p><strong>Access:</strong> Investor Dashboard + CSV Export</p>
-           <a
+       <a
   className="manage-subscription"
- href="https://dashboard.stripe.com/test/customers"
+  href="https://checkout.pslfinancehub.com/p/login/3cIbJ30n6a3ofNydRsabK00"
   target="_blank"
   rel="noopener noreferrer"
 >
   Manage Subscription
-</a> 
+</a>
 </div>
 
           <div className="stats">
