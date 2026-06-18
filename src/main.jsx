@@ -400,9 +400,10 @@ alert("CSV Upload Fired");
     
     setLeads([...leads, ...importedLeads]);
 
-    importedLeads.forEach((lead) => {
-      saveLead(lead);
-    });
+ importedLeads.forEach((lead) => {
+  alert("Calling saveLead for " + lead.owner);
+  saveLead(lead);
+});
   };
 
   reader.readAsText(file);
