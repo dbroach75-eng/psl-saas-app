@@ -762,7 +762,7 @@ if (performanceScore > 100) {
         })
       });
 
-      const data = await response.json();
+         const data = await response.json();
 
       if (data.url) {
         window.location.href = data.url;
