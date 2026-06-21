@@ -743,9 +743,8 @@ if (performanceScore > 100) {
   <button
     className="manage-subscription"
   onClick={async () => {
-  alert("NEW BUTTON IS RUNNING");
-
-  const profile = users.find(u => u.email === email);
+ 
+ const profile = users.find(u => u.email === email);
 
       if (!profile?.stripe_customer_id) {
         alert("No Stripe customer ID found for this account.");
