@@ -476,27 +476,47 @@ if (page === "login") {
     </main>
   );
 }
-  if (page === "terms") {
+if (page === "privacy") {
   return (
     <main className="center">
       <section className="login-card">
-        <h1>Terms of Service</h1>
-        <p>PSL Finance Hub provides foreclosure overage lead management tools for informational and business use only.</p>
-        <p>Users are responsible for verifying all lead data before taking action.</p>
-        <p>Use of this platform does not guarantee profits, successful claims, or recovery of funds.</p>
+        <h1>Privacy Policy</h1>
+        <p>PSL Finance Hub collects user account information, email addresses, uploaded lead data, notes, favorites, follow-ups, and usage information needed to operate the platform.</p>
+        <p>Payments are processed securely through Stripe. PSL Finance Hub does not store full credit card numbers.</p>
+        <p>Lead data and account activity may be stored using Supabase database services.</p>
+        <p>Users are responsible for handling lead information lawfully and respectfully.</p>
+        <p>For support, contact: support@pslfinancehub.com</p>
         <button className="link" onClick={() => setPage("dashboard")}>Back to Dashboard</button>
       </section>
     </main>
   );
 }
 
-if (page === "privacy") {
+if (page === "terms") {
   return (
     <main className="center">
       <section className="login-card">
-        <h1>Privacy Policy</h1>
-        <p>PSL Finance Hub collects account information, login details, uploaded lead data, and usage information needed to operate the platform.</p>
-        <p>We do not sell user account information. Users are responsible for handling uploaded lead data lawfully.</p>
+        <h1>Terms of Service</h1>
+        <p>PSL Finance Hub provides foreclosure overage lead management tools for informational and business use only.</p>
+        <p>Subscriptions are billed through Stripe. Users are responsible for managing their own billing and cancellation through the billing portal.</p>
+        <p>PSL Finance Hub does not guarantee profits, successful claims, recovered funds, or legal outcomes.</p>
+        <p>Users are responsible for verifying all lead data before outreach or business action.</p>
+        <p>Use of the platform means you agree to use the service lawfully and ethically.</p>
+        <button className="link" onClick={() => setPage("dashboard")}>Back to Dashboard</button>
+      </section>
+    </main>
+  );
+}
+
+if (page === "contact") {
+  return (
+    <main className="center">
+      <section className="login-card">
+        <h1>Contact Us</h1>
+        <p><strong>PSL Finance Hub Support</strong></p>
+        <p>Email: support@pslfinancehub.com</p>
+        <p>Response Time: 1–2 business days</p>
+        <p>For billing issues, use the Manage Subscription button inside your dashboard.</p>
         <button className="link" onClick={() => setPage("dashboard")}>Back to Dashboard</button>
       </section>
     </main>
