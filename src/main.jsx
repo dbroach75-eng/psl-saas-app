@@ -1304,13 +1304,31 @@ if (performanceScore > 100) {
           <button onClick={() => setPage("login")}>Login</button>
         </div>
       </nav>
+<section className="hero">
+  <h1>Discover Hidden Foreclosure Overage Opportunities Before Everyone Else</h1>
 
-      <section className="hero">
-        <h1>Find Hidden Foreclosure Money Most Investors Miss</h1>
-        <p>PSL Finance Hub helps investors discover foreclosure overage leads, track deals, and export opportunities nationwide.</p>
-        <button className="primary big" onClick={() => setPage("login")}>Enter Platform</button>
-      </section>
+  <p>
+    PSL Finance Hub helps investors, recovery specialists, and entrepreneurs
+    find foreclosure overage opportunities nationwide, organize leads, track
+    follow-ups, and manage deals—all from one secure platform.
+  </p>
 
+  <div className="hero-buttons">
+    <button className="primary big" onClick={() => setPage("login")}>
+      Access Dashboard
+    </button>
+
+    <button className="secondary big" onClick={() => window.location.href = "YOUR_FREE_LEADS_PAGE"}>
+      Get 5 Free Leads
+    </button>
+  </div>
+</section>
+      <section className="trust-bar">
+  <div>✅ Nationwide Lead Coverage</div>
+  <div>🔒 Secure Stripe Billing</div>
+  <div>📊 Professional Investor CRM</div>
+  <div>⚡ CSV Import & Export</div>
+</section>
       <section id="features" className="cards">
         <div><h3>Lead Database</h3><p>Search foreclosure overage opportunities by state, county, owner, and amount.</p></div>
         <div><h3>Investor Dashboard</h3><p>Track lead status from new to contacted, interested, and closed.</p></div>
