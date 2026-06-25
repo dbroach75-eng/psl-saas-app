@@ -1326,12 +1326,30 @@ if (performanceScore > 100) {
           <div><h3>Elite</h3><b>$299/mo</b><p>Premium leads and exports.</p></div>
         </div>
       </section>
-      <footer className="footer">
-  <button onClick={() => setPage("privacy")}>Privacy Policy</button>
-  <button onClick={() => setPage("terms")}>Terms of Service</button>
-  <button onClick={() => setPage("contact")}>Contact Us</button>
-  <button onClick={() => setPage("refund")}>Refund Policy</button>
-  <button onClick={() => setPage("disclaimer")}>Disclaimer</button>
+<footer className="footer">
+  <p>© 2026 PSL Finance Hub. All Rights Reserved.</p>
+
+  <div className="footer-links">
+    <button className="link" onClick={() => setPage("privacy")}>
+      Privacy Policy
+    </button>
+
+    <button className="link" onClick={() => setPage("terms")}>
+      Terms of Service
+    </button>
+
+    <button className="link" onClick={() => setPage("contact")}>
+      Contact Us
+    </button>
+
+    <button className="link" onClick={() => setPage("refund")}>
+      Refund Policy
+    </button>
+
+    <button className="link" onClick={() => setPage("disclaimer")}>
+      Disclaimer
+    </button>
+  </div>
 </footer>
     </main>
   );
