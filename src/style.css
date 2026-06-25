@@ -107,3 +107,30 @@ table th,
 table td {
   vertical-align: top;
 }
+.footer {
+  margin-top: 60px;
+  padding: 30px;
+  text-align: center;
+  border-top: 1px solid #2f3b4f;
+  color: #ccc;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.footer .link {
+  background: none;
+  border: none;
+  color: #22c55e;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.footer .link:hover {
+  text-decoration: underline;
+}
