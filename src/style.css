@@ -134,3 +134,32 @@ table td {
 .footer .link:hover {
   text-decoration: underline;
 }
+.footer {
+  display: block;
+  width: 100%;
+  margin-top: 80px;
+  padding: 40px 20px;
+  text-align: center;
+  border-top: 1px solid #334155;
+  color: #cbd5e1;
+  background: #0f172a;
+}
+
+.footer p {
+  margin-bottom: 16px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.footer-links .link {
+  background: transparent;
+  border: none;
+  color: #22c55e;
+  cursor: pointer;
+  font-weight: 600;
+}
