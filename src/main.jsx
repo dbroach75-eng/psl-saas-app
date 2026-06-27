@@ -1318,9 +1318,14 @@ if (performanceScore > 100) {
       Access Dashboard
     </button>
 
-    <button className="secondary big" onClick={() => window.location.href = "YOUR_FREE_LEADS_PAGE"}>
-      Get 5 Free Leads
-    </button>
+  <button
+  className="secondary big"
+  onClick={() => {
+    window.location.href = "https://tally.so/r/VLNqgg";
+  }}
+>
+  Get 5 Free Leads
+</button>
   </div>
 </section>
       <section className="trust-bar">
