@@ -28,6 +28,8 @@ function App() {
   const [query, setQuery] = useState("");
   const [stateFilter, setStateFilter] = useState("All");
   const [countyFilter, setCountyFilter] = useState("All");
+  const [minOverage, setMinOverage] = useState("");
+  const [maxOverage, setMaxOverage] = useState("");
   const [favorites, setFavorites] = useState([]);
   const [showHotLeads, setShowHotLeads] = useState(false);
   const [notes, setNotes] = useState({});
