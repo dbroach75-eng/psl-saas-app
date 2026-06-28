@@ -42,12 +42,15 @@ const filtered = useMemo(() => {
         .toLowerCase()
         .includes(q);
 
-    const matchesHotLead =
-      !showHotLeads || l.status === "Interested";
+ const matchesHotLead =
+  !showHotLeads || l.status === "Interested";
 
-    return matchesSearch && matchesHotLead;
+const matchesState =
+  stateFilter === "All" || l.state === stateFilter;
+
+return matchesSearch && matchesHotLead && matchesState;
   });
-}, [query, leads, showHotLeads]);
+}, [query, leads, showHotLeads, stateFilter]);
  async function loadSavedNotes() {
   if (!supabase) return;
 
