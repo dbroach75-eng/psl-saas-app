@@ -62,7 +62,10 @@ const matchesCounty =
   (!maxOverage || l.overage <= Number(maxOverage));
 
  const matchesStatus =
-  statusFilter === "All" || l.status === statusFilter;   
+  statusFilter === "All" || l.status === statusFilter;  
+    
+ const matchesFavorite =
+  !showFavoritesOnly || favorites.includes(l.id);
 
 return (
   matchesSearch &&
@@ -70,7 +73,8 @@ return (
   matchesState &&
   matchesCounty &&
   matchesOverage &&
-  matchesStatus
+  matchesStatus &&
+  matchesFavorite
 );
 });
 }, [
@@ -81,7 +85,9 @@ return (
   countyFilter,
   minOverage,
   maxOverage,
-  statusFilter
+  statusFilter,
+  showFavoritesOnly,
+  favorites
 ]);
 
  async function loadSavedNotes() {
