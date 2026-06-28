@@ -54,14 +54,19 @@ const matchesState =
 const matchesCounty =
   countyFilter === "All" || l.county === countyFilter;
 
+  const matchesOverage =
+  (!minOverage || l.overage >= Number(minOverage)) &&
+  (!maxOverage || l.overage <= Number(maxOverage));
+
 return (
   matchesSearch &&
   matchesHotLead &&
   matchesState &&
-  matchesCounty
+  matchesCounty &&
+  matchesOverage
 );
 });
-}, [query, leads, showHotLeads, stateFilter, countyFilter]);
+}, [query, leads, showHotLeads, stateFilter, countyFilter, minOverage, maxOverage]);
 
  async function loadSavedNotes() {
   if (!supabase) return;
