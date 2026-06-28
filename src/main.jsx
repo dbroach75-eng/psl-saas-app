@@ -28,6 +28,7 @@ function App() {
   const [query, setQuery] = useState("");
   const [stateFilter, setStateFilter] = useState("All");
   const [countyFilter, setCountyFilter] = useState("All");
+  const [statusFilter, setStatusFilter] = useState("All");
   const [minOverage, setMinOverage] = useState("");
   const [maxOverage, setMaxOverage] = useState("");
   const [favorites, setFavorites] = useState([]);
@@ -35,7 +36,7 @@ function App() {
   const [notes, setNotes] = useState({});
   const [users, setUsers] = useState([]);
   const [followUps, setFollowUps] = useState({});
-  const [statusFilter, setStatusFilter] = useState("All");
+
   
 const filtered = useMemo(() => {
   const q = query.toLowerCase();
