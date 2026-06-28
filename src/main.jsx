@@ -1249,7 +1249,14 @@ if (performanceScore > 100) {
 >
     {showHotLeads ? "🔥 Hot Leads ON" : "🔥 Hot Leads OFF"}
   </button>
-
+                
+   <button
+  className="primary"
+  onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}
+>
+  {showFavoritesOnly ? "⭐ Favorites ON" : "⭐ Favorites OFF"}
+</button>
+                
   <span className="lead-count">
     {filtered.length} Leads Found
   </span>
