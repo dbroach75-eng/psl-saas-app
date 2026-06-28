@@ -43,32 +43,24 @@ const filtered = useMemo(() => {
         .toLowerCase()
         .includes(q);
 
- const matchesHotLead =
+const matchesHotLead =
   !showHotLeads || l.status === "Interested";
 
 const matchesState =
   stateFilter === "All" || l.state === stateFilter;
 
-return matchesSearch && matchesHotLead && matchesState;
-  });
-}, [query, leads, showHotLeads, stateFilter]);
+const matchesCounty =
+  countyFilter === "All" || l.county === countyFilter;
 
- <select
-  className="search"
-  value={countyFilter}
-  onChange={(e) => setCountyFilter(e.target.value)}
->
-  <option value="All">🏛️ All Counties</option>
+return (
+  matchesSearch &&
+  matchesHotLead &&
+  matchesState &&
+  matchesCounty
+);
+});
+}, [query, leads, showHotLeads, stateFilter, countyFilter]);
 
-  {[...new Set(leads.map(lead => lead.county))]
-    .sort()
-    .map(county => (
-      <option key={county} value={county}>
-        {county}
-      </option>
-    ))}
-</select> 
-  
  async function loadSavedNotes() {
   if (!supabase) return;
 
@@ -1185,6 +1177,22 @@ if (performanceScore > 100) {
       </option>
     ))}
 </select>
+
+  <select
+  className="search"
+  value={countyFilter}
+  onChange={(e) => setCountyFilter(e.target.value)}
+>
+  <option value="All">🏛️ All Counties</option>
+
+  {[...new Set(leads.map(lead => lead.county))]
+    .sort()
+    .map(county => (
+      <option key={county} value={county}>
+        {county}
+      </option>
+    ))}
+</select>              
 
 <button
   className="primary"
