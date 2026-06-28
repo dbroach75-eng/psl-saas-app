@@ -67,6 +67,11 @@ const matchesCounty =
     
  const matchesFavorite =
   !showFavoritesOnly || favorites.includes(l.id);
+    
+    const today = new Date().toISOString().split("T")[0];
+
+const matchesDueToday =
+  !showDueToday || followUps[l.id] === today;
 
 return (
   matchesSearch &&
@@ -75,7 +80,8 @@ return (
   matchesCounty &&
   matchesOverage &&
   matchesStatus &&
-  matchesFavorite
+  matchesFavorite &&
+  matchesDueToday
 );
 });
 }, [
@@ -88,7 +94,9 @@ return (
   maxOverage,
   statusFilter,
   showFavoritesOnly,
-  favorites
+  favorites,
+  showDueToday,
+  followUps
 ]);
 
  async function loadSavedNotes() {
