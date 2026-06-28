@@ -27,6 +27,7 @@ function App() {
   const [leads, setLeads] = useState(demoLeads);
   const [query, setQuery] = useState("");
   const [stateFilter, setStateFilter] = useState("All");
+  const [countyFilter, setCountyFilter] = useState("All");
   const [favorites, setFavorites] = useState([]);
   const [showHotLeads, setShowHotLeads] = useState(false);
   const [notes, setNotes] = useState({});
@@ -51,6 +52,23 @@ const matchesState =
 return matchesSearch && matchesHotLead && matchesState;
   });
 }, [query, leads, showHotLeads, stateFilter]);
+
+ <select
+  className="search"
+  value={countyFilter}
+  onChange={(e) => setCountyFilter(e.target.value)}
+>
+  <option value="All">🏛️ All Counties</option>
+
+  {[...new Set(leads.map(lead => lead.county))]
+    .sort()
+    .map(county => (
+      <option key={county} value={county}>
+        {county}
+      </option>
+    ))}
+</select> 
+  
  async function loadSavedNotes() {
   if (!supabase) return;
 
