@@ -1217,6 +1217,18 @@ if (performanceScore > 100) {
   value={maxOverage}
   onChange={(e) => setMaxOverage(e.target.value)}
 />
+<select
+  className="search"
+  value={statusFilter}
+  onChange={(e) => setStatusFilter(e.target.value)}
+>
+  <option value="All">📋 All Statuses</option>
+  <option value="New">New</option>
+  <option value="Contacted">Contacted</option>
+  <option value="Interested">Interested</option>
+  <option value="Closed">Closed</option>
+</select>
+                
 <button
   className="primary"
   onClick={() => setShowHotLeads(!showHotLeads)}
