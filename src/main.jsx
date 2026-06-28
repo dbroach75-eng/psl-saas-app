@@ -1142,17 +1142,33 @@ if (performanceScore > 100) {
           <section className="panel">
             <div className="table-wrap">
               <div className="panel-head">
-  <input
-    className="search"
-    placeholder="🔍 Search by owner, phone, state, county, address, or status..."
-    value={query}
-    onChange={e => setQuery(e.target.value)}
-  />
+<input
+  className="search"
+  placeholder="🔍 Search by owner, phone, state, county, address, or status..."
+  value={query}
+  onChange={e => setQuery(e.target.value)}
+/>
 
-  <button
-    className="primary"
-    onClick={() => setShowHotLeads(!showHotLeads)}
-  >
+<select
+  className="search"
+  value={stateFilter}
+  onChange={(e) => setStateFilter(e.target.value)}
+>
+  <option value="All">🌎 All States</option>
+
+  {[...new Set(leads.map(lead => lead.state))]
+    .sort()
+    .map(state => (
+      <option key={state} value={state}>
+        {state}
+      </option>
+    ))}
+</select>
+
+<button
+  className="primary"
+  onClick={() => setShowHotLeads(!showHotLeads)}
+>
     {showHotLeads ? "🔥 Hot Leads ON" : "🔥 Hot Leads OFF"}
   </button>
 
