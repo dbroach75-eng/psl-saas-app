@@ -35,6 +35,7 @@ function App() {
   const [notes, setNotes] = useState({});
   const [users, setUsers] = useState([]);
   const [followUps, setFollowUps] = useState({});
+  const [statusFilter, setStatusFilter] = useState("All");
   
 const filtered = useMemo(() => {
   const q = query.toLowerCase();
