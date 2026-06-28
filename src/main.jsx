@@ -1195,7 +1195,21 @@ if (performanceScore > 100) {
       </option>
     ))}
 </select>              
+<input
+  className="search"
+  type="number"
+  placeholder="💰 Min Overage"
+  value={minOverage}
+  onChange={(e) => setMinOverage(e.target.value)}
+/>
 
+<input
+  className="search"
+  type="number"
+  placeholder="💰 Max Overage"
+  value={maxOverage}
+  onChange={(e) => setMaxOverage(e.target.value)}
+/>
 <button
   className="primary"
   onClick={() => setShowHotLeads(!showHotLeads)}
