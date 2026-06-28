@@ -33,6 +33,7 @@ function App() {
   const [maxOverage, setMaxOverage] = useState("");
   const [favorites, setFavorites] = useState([]);
   const [showHotLeads, setShowHotLeads] = useState(false);
+  const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
   const [notes, setNotes] = useState({});
   const [users, setUsers] = useState([]);
   const [followUps, setFollowUps] = useState({});
