@@ -1264,6 +1264,13 @@ if (performanceScore > 100) {
   {showFavoritesOnly ? "⭐ Favorites ON" : "⭐ Favorites OFF"}
 </button>
                 
+   <button
+  className="primary"
+  onClick={() => setShowDueToday(!showDueToday)}
+>
+  {showDueToday ? "📅 Due Today ON" : "📅 Due Today OFF"}
+</button>             
+                
   <span className="lead-count">
     {filtered.length} Leads Found
   </span>
