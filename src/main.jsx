@@ -982,6 +982,35 @@ if (performanceScore > 100) {
     <b>{freeUsers}</b>
     <span>Free Users</span>
   </div>
+  <div className="stat">
+  <b>{leads.length}</b>
+  <span>Total Leads</span>
+</div>
+
+<div className="stat">
+  <b>{favorites.length}</b>
+  <span>Favorite Leads</span>
+</div>
+
+<div className="stat">
+  <b>{Object.keys(followUps).length}</b>
+  <span>Scheduled Follow-Ups</span>
+</div>
+
+<div className="stat">
+  <b>{leads.filter(l => l.status === "Interested").length}</b>
+  <span>Interested Leads</span>
+</div>
+
+<div className="stat">
+  <b>{leads.filter(l => l.status === "Closed").length}</b>
+  <span>Closed Leads</span>
+</div>
+
+<div className="stat">
+  <b>{[...new Set(leads.map(l => l.state))].length}</b>
+  <span>States Covered</span>
+</div>
 </div>
           <div className="analytics-card">
   <h2>📊 Performance Scorecard</h2>
