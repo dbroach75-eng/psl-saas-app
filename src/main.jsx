@@ -987,9 +987,13 @@ if (performanceScore > 100) {
   <span>Total Leads</span>
 </div>
 
-<div className="stat">
+<div
+  className="stat"
+  onClick={() => setShowFavoritesOnly(true)}
+  style={{ cursor: "pointer" }}
+>
   <b>{favorites.length}</b>
-  <span>Favorite Leads</span>
+  <span>⭐ Favorite Leads</span>
 </div>
 
 <div className="stat">
