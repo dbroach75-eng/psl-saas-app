@@ -1001,14 +1001,22 @@ if (performanceScore > 100) {
   <span>Scheduled Follow-Ups</span>
 </div>
 
-<div className="stat">
+<div
+  className="stat"
+  onClick={() => setStatusFilter("Interested")}
+  style={{ cursor: "pointer" }}
+>
   <b>{leads.filter(l => l.status === "Interested").length}</b>
-  <span>Interested Leads</span>
+  <span>🤝 Interested Leads</span>
 </div>
 
-<div className="stat">
+<div
+  className="stat"
+  onClick={() => setStatusFilter("Closed")}
+  style={{ cursor: "pointer" }}
+>
   <b>{leads.filter(l => l.status === "Closed").length}</b>
-  <span>Closed Leads</span>
+  <span>✅ Closed Leads</span>
 </div>
 
 <div className="stat">
