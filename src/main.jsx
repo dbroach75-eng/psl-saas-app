@@ -944,6 +944,48 @@ if (performanceScore > 100) {
     <strong>{upcomingFollowUps} Leads</strong>
   </div>
 </div>
+          <div className="analytics-card">
+  <h2>⚡ Quick Actions</h2>
+
+  <div className="quick-actions">
+
+    <button
+      className="primary"
+      onClick={() => setAdmin(true)}
+    >
+      ➕ Add Lead
+    </button>
+
+    <button
+      className="primary"
+      onClick={exportCSV}
+    >
+      📤 Export CSV
+    </button>
+
+    <button
+      className="primary"
+      onClick={() => setShowFavoritesOnly(true)}
+    >
+      ⭐ Favorites
+    </button>
+
+    <button
+      className="primary"
+      onClick={() => setShowDueToday(true)}
+    >
+      📅 Due Today
+    </button>
+
+    <button
+      className="primary"
+      onClick={() => setShowHotLeads(true)}
+    >
+      🔥 Hot Leads
+    </button>
+
+  </div>
+</div>
          <div className="analytics-card">
   <h2>📋 Follow-Up Details</h2>
 
