@@ -182,3 +182,13 @@ table td {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(34, 197, 94, 0.2);
 }
+.quick-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    margin-top:15px;
+}
+
+.quick-actions button{
+    min-width:170px;
+}
