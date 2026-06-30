@@ -1007,6 +1007,37 @@ if (performanceScore > 100) {
     ))
   )}
 </div> 
+   <div className="analytics-card">
+  <h1>👋 Welcome Back, {email}</h1>
+
+  <p>
+    Here's your command center for today.
+  </p>
+
+  <div className="quick-actions">
+
+    <div className="stat">
+      <b>{Object.keys(followUps).length}</b>
+      <span>📅 Follow-Ups Scheduled</span>
+    </div>
+
+    <div className="stat">
+      <b>{favorites.length}</b>
+      <span>⭐ Favorite Leads</span>
+    </div>
+
+    <div className="stat">
+      <b>{hotLeads}</b>
+      <span>🔥 Hot Leads</span>
+    </div>
+
+    <div className="stat">
+      <b>${largestOverage.toLocaleString()}</b>
+      <span>💰 Largest Opportunity</span>
+    </div>
+
+  </div>
+</div>       
           <h3>💰 Revenue Dashboard</h3>
 
 <div className="kpi-grid">
