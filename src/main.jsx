@@ -1093,6 +1093,47 @@ if (performanceScore > 100) {
 </div>
 </div>
           <div className="analytics-card">
+  <h2>📊 Executive Analytics</h2>
+
+  <div className="kpi-grid">
+
+    <div className="stat">
+      <b>{leads.filter(l => l.status === "New").length}</b>
+      <span>🆕 New Leads</span>
+    </div>
+
+    <div className="stat">
+      <b>{leads.filter(l => l.status === "Contacted").length}</b>
+      <span>📞 Contacted</span>
+    </div>
+
+    <div className="stat">
+      <b>{leads.filter(l => l.status === "Interested").length}</b>
+      <span>🤝 Interested</span>
+    </div>
+
+    <div className="stat">
+      <b>{leads.filter(l => l.status === "Closed").length}</b>
+      <span>✅ Closed</span>
+    </div>
+
+    <div className="stat">
+      <b>{[...new Set(leads.map(l => l.county))].length}</b>
+      <span>🏛 Counties Covered</span>
+    </div>
+
+    <div className="stat">
+      <b>
+        ${leads
+          .reduce((sum, l) => sum + l.overage, 0)
+          .toLocaleString()}
+      </b>
+      <span>💰 Total Overage</span>
+    </div>
+
+  </div>
+</div>
+          <div className="analytics-card">
   <h2>📊 Performance Scorecard</h2>
 
   <div className="stats-grid">
