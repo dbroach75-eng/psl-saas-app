@@ -1015,7 +1015,36 @@ if (performanceScore > 100) {
       <span>💰 Largest Opportunity</span>
     </div>
   </div>
-</div>    
+</div> 
+     <div className="analytics-card">
+  <h2>🏆 Today's Top Opportunities</h2>
+
+  <div className="kpi-grid">
+
+    {topLeads.slice(0,5).map(lead => (
+
+      <div key={lead.id} className="stat">
+
+        <h3>{lead.owner}</h3>
+
+        <p>{lead.county}</p>
+
+        <b>{getLeadTier(lead)}</b>
+
+        <p>
+          Score: {getLeadScore(lead)}
+        </p>
+
+        <p>
+          ${lead.overage.toLocaleString()}
+        </p>
+
+      </div>
+
+    ))}
+
+  </div>
+</div>     
          <div className="analytics-card">
   <h2>📋 Follow-Up Details</h2>
 
