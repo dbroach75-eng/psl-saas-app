@@ -1033,8 +1033,7 @@ if (performanceScore > 100) {
     ))
   )}
 </div> 
-          </div>
-          <h3>💰 Revenue Dashboard</h3>
+        <h3>💰 Revenue Dashboard</h3>
 
 <div className="kpi-grid">
   <div className="stat">
