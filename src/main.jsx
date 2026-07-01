@@ -1034,16 +1034,6 @@ if (performanceScore > 100) {
   )}
 </div> 
           
-      <div className="stat">
-      <b>{leads.filter(l => l.status === "Interested").length}</b>
-      <span>🔥 Hot Leads</span>
-    </div>
-
-    <div className="stat">
-      <b>${Math.max(...leads.map(l => l.overage), 0).toLocaleString()}</b>
-      <span>💰 Largest Opportunity</span>
-    </div>
-  </div>
 </div>
           <h3>💰 Revenue Dashboard</h3>
 
