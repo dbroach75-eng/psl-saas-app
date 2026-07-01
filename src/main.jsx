@@ -1499,7 +1499,13 @@ if (performanceScore > 100) {
 </td>
 
 <td>
-  🔥 {getLeadScore(lead)}
+  <div style={{ fontWeight: "bold" }}>
+    {getLeadTier(lead)}
+  </div>
+
+  <small>
+    Score: {getLeadScore(lead)}
+  </small>
 </td>
                                    <td>
   <button onClick={() => toggleFavorite(lead.id)}>
