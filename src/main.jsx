@@ -691,7 +691,12 @@ const upcomingFollowUps = Object.values(followUps).filter(
 
 function getLeadScore(lead) {
   let score = 0;
-
+  
+if (lead.overage >= 100000) score += 40;
+else if (lead.overage >= 50000) score += 30;
+else if (lead.overage >= 25000) score += 20;
+else if (lead.overage >= 10000) score += 10;
+  
   if (favorites.includes(lead.id)) score += 50;
   if (followUps[lead.id] === today) score += 25;
   if (lead.status === "Interested") score += 15;
@@ -701,12 +706,11 @@ function getLeadScore(lead) {
 }
 function getLeadTier(lead) {
   const score = getLeadScore(lead);
+if (score >= 100) return "🤖 AI Priority";
+if (score >= 75) return "🔥 High Value";
+if (score >= 40) return "⭐ Opportunity";
 
-  if (score >= 100) return "🔥 Platinum";
-  if (score >= 75) return "🥇 Gold";
-  if (score >= 40) return "🥈 Silver";
-
-  return "🥉 Bronze";
+return "📄 Standard";
 }
 
 const topLeads = [...filtered]
