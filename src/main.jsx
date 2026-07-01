@@ -986,6 +986,32 @@ if (performanceScore > 100) {
 
   </div>
 </div>
+      <div className="analytics-card">
+  <h1>👋 Welcome Back!</h1>
+  <p>Here's your command center for today.</p>
+
+  <div className="quick-actions">
+    <div className="stat">
+      <b>{Object.keys(followUps).length}</b>
+      <span>📅 Follow-Ups Scheduled</span>
+    </div>
+
+    <div className="stat">
+      <b>{favorites.length}</b>
+      <span>⭐ Favorite Leads</span>
+    </div>
+
+    <div className="stat">
+      <b>{leads.filter(l => l.status === "Interested").length}</b>
+      <span>🔥 Hot Leads</span>
+    </div>
+
+    <div className="stat">
+      <b>${Math.max(...leads.map(l => l.overage), 0).toLocaleString()}</b>
+      <span>💰 Largest Opportunity</span>
+    </div>
+  </div>
+</div>    
          <div className="analytics-card">
   <h2>📋 Follow-Up Details</h2>
 
@@ -1007,22 +1033,8 @@ if (performanceScore > 100) {
     ))
   )}
 </div> 
-<div className="analytics-card">
-  <h1>👋 Welcome Back!</h1>
-  <p>Here's your command center for today.</p>
-
-  <div className="quick-actions">
-    <div className="stat">
-      <b>{Object.keys(followUps).length}</b>
-      <span>📅 Follow-Ups Scheduled</span>
-    </div>
-
-    <div className="stat">
-      <b>{favorites.length}</b>
-      <span>⭐ Favorite Leads</span>
-    </div>
-
-    <div className="stat">
+          
+      <div className="stat">
       <b>{leads.filter(l => l.status === "Interested").length}</b>
       <span>🔥 Hot Leads</span>
     </div>
